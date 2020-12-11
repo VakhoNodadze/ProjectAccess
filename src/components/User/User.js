@@ -12,7 +12,7 @@ const User = ({avatar, fullName, email, role, active, theme}) => {
     <Grid>
       <Grid.Item xs={3}>
         <div style={{display: 'flex', alignItems: 'center'}}>
-          <Avatar avatar={avatar} />
+          <Avatar avatar={avatar}/>
           <Flex direction="column" align="flex-start">
             <p style={{fontSize: theme.fontSize.h3}}>
               {fullName}
