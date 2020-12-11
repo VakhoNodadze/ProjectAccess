@@ -38,7 +38,7 @@ export const themes = {
       gray200: '#C6C6C6',
       gray400: '#666666',
       gray600: '#707070',
-      purpele: '#7E7EF1',
+      lightBlue: '#7E7EF1',
       blue: '#305ECA'
     },
     radius: { none: 0, sm: 4, md: 8, lg: 12, xl: 16, rounded: '100rem' },
@@ -236,7 +236,7 @@ export const themes = {
       gray200: '#C6C6C6',
       gray400: '#666666',
       gray600: '#707070',
-      purpele: '#7E7EF1',
+      lightBlue: '#7E7EF1',
       blue: '#305ECA'
     },
     radius: { none: 0, sm: 4, md: 8, lg: 12, xl: 16, rounded: '100rem' },

@@ -7,18 +7,19 @@ const Slider = styled.span `
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #ff6666;
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 34px;
     &:before{
         position: absolute;
         content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
+        height: 18px;
+        width: 18px;
+        right: 15px;
+        bottom: -3px;
+        background-color: #ff1a1a;
+        -webkit-transition: .4s;
         -webkit-transition: .4s;
         transition: .4s;
         border-radius: 50%;
@@ -28,21 +29,19 @@ const Slider = styled.span `
 const Label = styled.label `
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 30px;
+    height: 10px;
     & input {
         opacity: 0;
         width: 0;
         height: 0;
     }
     & input:checked + ${Slider}{
-        background-color: #2196F3;
-    }
-    & input:focus + ${Slider}{
-        box-shadow: 0 0 1px #2196F3;
+        background-color: ${(props) => (props.color ? props.color : props.theme.color.lightBlue)};
     }
     & input:checked + ${Slider}:before{
-        transform: translateX(26px);
+        transform: translateX(20px);
+        background-color: ${(props) => (props.color ? props.color : props.theme.color.blue)};
     }
 `;
 
