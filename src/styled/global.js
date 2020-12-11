@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   input, textarea {
-    font-family: ${(props) => props.theme.fonts.regular};
+    font-family: ${(props) => props.theme.fonts.semibold};
   }
 
   a {

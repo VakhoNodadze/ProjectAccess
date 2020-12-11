@@ -6,8 +6,8 @@ import Table from '../components/Table';
 
 const Main = ({theme}) => {
   return (
-    <Flex direction="column" full padding="4rem 4rem 0 4rem">
-      <Flex justify="space-between" width="100%" height="15%">
+    <Flex direction="column" full>
+      <Flex justify="space-between" width="100%" height="15%" padding="4rem 4rem 0 4rem">
         <h1 style={{color: theme.color.text, fontSize: theme.fontSize.h1}}>Project Access</h1>
         <p>Input here</p>
       </Flex>

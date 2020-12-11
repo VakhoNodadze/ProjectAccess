@@ -22,9 +22,8 @@ export const themes = {
     // fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
     fonts: {
       regular: 'Sagoe-Regular, Roboto, sans-serif',
-      italic: 'Sagoe-Italic, Roboto, sans-serif',
       bold: 'Sagoe-Bold, Roboto, sans-serif',
-      boldItalic: 'Sagoe-Bold-Italic, Roboto, sans-serif'
+      semibold: 'Sagoe-SemiBold, Roboto, sans-serif'
     },
     color: {
       // main
@@ -222,10 +221,9 @@ export const themes = {
     breakpoints,
     // fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
     fonts: {
-      regular: 'Sagoe-Regula, Roboto, sans-serif',
-      italic: 'Sagoe-Italic, Roboto, sans-serif',
+      regular: 'Sagoe-Regular, Roboto, sans-serif',
       bold: 'Sagoe-Bold, Roboto, sans-serif',
-      boldItalic: 'Sagoe-Bold-Italic, Roboto, sans-serif'
+      semibold: 'Sagoe-SemiBold, Roboto, sans-serif'
     },
     color: {
       // main
