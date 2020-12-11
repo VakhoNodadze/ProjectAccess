@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: ${(props) => props.theme.fonts.regular};
+    font-family: ${(props) => props.theme.fonts.semibold};
     font-size: ${(props) => props.theme.fontSizes.body};
     line-height: ${(props) => props.theme.lineHeights.body};;
     margin: 0;
@@ -47,16 +47,19 @@ const GlobalStyle = createGlobalStyle`
   h2 {
     font-size: ${(props) => props.theme.fontSizes.h1};
     line-height: ${(props) => props.theme.lineHeights.h1};
+    margin: 0;
   }
 
   h2 {
     font-size: ${(props) => props.theme.fontSizes.h2};
     line-height: ${(props) => props.theme.lineHeights.h2};
+    margin: 0;
   }
 
   h3 {
     font-size: ${(props) => props.theme.fontSizes.h3};
     line-height: ${(props) => props.theme.lineHeights.h3};
+    margin: 0;
   }
 
   h4 {
@@ -73,8 +76,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   p {
-    margin-top: 0;
-    margin-bottom: 1rem;
+    margin: 0;
   }
 
   b {

@@ -12,7 +12,7 @@ const Avatar = ({ children, size, avatar, color, borderColor, rounded, firstName
     if (onClick) {onClick();}
   };
 
-  if (avatar && avatar.url) {
+  if (avatar) {
     return (
       <div className="avatar" style={{ position: 'relative' }}>
         <StyledContainer
@@ -23,7 +23,7 @@ const Avatar = ({ children, size, avatar, color, borderColor, rounded, firstName
           clickable={typeof onClick === 'function'}
           onClick={handleClick}
         >
-          <Image src={avatar.url} />
+          <Image src={avatar} />
         </StyledContainer>
 
         {LabelIcon && (
@@ -96,7 +96,7 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-  size: 'default',
+  size: 'small',
   firstName: '',
   lastName: '',
   color: null,

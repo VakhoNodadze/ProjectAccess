@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withTheme } from 'styled-components';
+
 import Grid from '../primitives/Grid';
 import Flex from '../primitives/Flex';
+import Avatar from '../primitives/Avatar';
+import Toggler from '../primitives/ToggleSlider';
 
-const User = ({avatar, fullName, email, role, status, theme}) => {
+const User = ({avatar, fullName, email, role, active, theme}) => {
+  const [ isActive, setIsActive ] = useState(active);
   return (
     <Grid>
       <Grid.Item xs={3}>
         <div style={{display: 'flex', alignItems: 'center'}}>
-          <Flex direction="column" center>
+          <Avatar avatar={avatar} />
+          <Flex direction="column" align="flex-start">
             <p style={{fontSize: theme.fontSize.h3}}>
               {fullName}
             </p>
-            <span style={{fontFamily: theme.fonts.regular, fontSize: theme.fontSize.h3}}>{email}</span>
+            <span style={{fontFamily: theme.fonts.light, fontSize: theme.fontSize.h3}}>{email}</span>
           </Flex>
         </div>
       </Grid.Item>
@@ -20,7 +25,7 @@ const User = ({avatar, fullName, email, role, status, theme}) => {
         {role}
       </Grid.Item>
       <Grid.Item xs={3}>
-        {status}
+        <Toggler isChecked={isActive} onChange={() => setIsActive((prevState) => !prevState)} />
       </Grid.Item>
       <Grid.Item xs={3}>
                 

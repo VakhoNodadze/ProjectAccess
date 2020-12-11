@@ -1,4 +1,4 @@
-import User from '../Icons/User';
+import User from '../resources/images/UserProfile.png';
 
 export const users = [
   {

@@ -23,7 +23,8 @@ export const themes = {
     fonts: {
       regular: 'Sagoe-Regular, Roboto, sans-serif',
       bold: 'Sagoe-Bold, Roboto, sans-serif',
-      semibold: 'Sagoe-SemiBold, Roboto, sans-serif'
+      semibold: 'Sagoe-SemiBold, Roboto, sans-serif',
+      light: 'Sagoe-Light, Roboto, sans-serif'
     },
     color: {
       // main
@@ -78,10 +79,6 @@ export const themes = {
     },
     // end new theme
     type: 'light',
-    fontFamily: {
-      default: 'OpenSans-Regular, Roboto, sans-serif',
-      bold: 'Mont-Bold, Roboto, sans-serif'
-    },
     fontSize: {
       tiny: '11px',
       mini: '12px',
@@ -146,8 +143,9 @@ export const themes = {
     avatarSize: {
       tiny: '28px',
       mini: '32px',
-      small: '44px',
-      default: '64px',
+      small: '42px',
+      default: '46px',
+      normal: '64px',
       large: '84px',
       big: '120px',
       huge: '154px'
@@ -223,7 +221,8 @@ export const themes = {
     fonts: {
       regular: 'Sagoe-Regular, Roboto, sans-serif',
       bold: 'Sagoe-Bold, Roboto, sans-serif',
-      semibold: 'Sagoe-SemiBold, Roboto, sans-serif'
+      semibold: 'Sagoe-SemiBold, Roboto, sans-serif',
+      light: 'Sagoe-Light, Roboto, sans-serif'
     },
     color: {
       // main
@@ -278,10 +277,6 @@ export const themes = {
     },
     // end new theme
     type: 'dark',
-    fontFamily: {
-      default: 'OpenSans-Regular, Roboto, sans-serif',
-      bold: 'Mont-Bold, Roboto, sans-serif'
-    },
     fontSize: {
       tiny: '11px',
       mini: '12px',
@@ -346,8 +341,9 @@ export const themes = {
     avatarSize: {
       tiny: '28px',
       mini: '32px',
-      small: '44px',
-      default: '64px',
+      small: '42px',
+      default: '46px',
+      normal: '64px',
       large: '84px',
       big: '120px',
       huge: '154px'

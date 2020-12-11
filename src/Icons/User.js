@@ -1,8 +1,8 @@
 
 import React from 'react';
 
-export const User = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="41.486" height="41.486" viewBox="0 0 41.486 41.486" style={{fill: '#666'}}>
+export const UserProfile = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="41.486" height="41.486" viewBox="0 0 41.486 41.486">
     <path class="a" 
       d="M429.866,529.651a20.743,20.743,0,1,0,20.743,20.743A20.74,20.74,0,0,0,429.866,529.
             651Zm0,8.03a7.36,7.36,0,1,1-7.361,7.36A7.361,7.361,0,0,1,429.866,537.681Zm0,28.772a16.03,16.03,0,0,1-12.
@@ -12,4 +12,4 @@ export const User = () => (
   </svg>
 );
 
-export default User;
+export default UserProfile;

@@ -37,8 +37,13 @@ const Table = ({theme}) => {
       </Grid>
       <Divider style={{backgroundColor: theme.color.gray200}} />
       {
-        users.map(user => (
-          <User key={user._id} avatar={user.avatar} fullName={user.name} email={user.email} role={user.role} />
+        users.map((user) => (
+          <User key={user._id} 
+            avatar={user.avatar} 
+            fullName={user.name} 
+            email={user.email} 
+            role={user.role} 
+            active={user.active} />
         ))
       }
     </div>
