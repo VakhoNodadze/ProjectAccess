@@ -1,32 +1,28 @@
 import styled from 'styled-components';
 
-const StyledContainer = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
 
-  li {
-    float: left;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 38px;
-    min-width: 38px;
-    font-size: 12px;
-    font-weight: 500;
-    color: rgba(0,0,0,0.54);
-    border: solid 1px rgba(0,0,0,0.15);
-    background-color: #fff;
-    margin: 0;
-    margin-right: 6px;
+const PrevNext = styled.span `
+    font-size: 1rem;
+    font-family: ${(props) => props.theme.fonts.light};
+    margin: 0 0.3rem;
+    padding: 0 0.3rem;
     cursor: pointer;
-
-    &.active {
-      border-color: #2675fe;
-      color: #2675fe;
+    &:hover{
+        background-color: ${(props) => props.theme.color.gray000};
     }
-  }
+    
 `;
-
-export { StyledContainer };
+const Page = styled.li `
+    font-family: ${(props) => props.theme.fonts.bold};
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+    background-color: ${(props) => (props.active ? props.theme.color.gray200 : 'transparent')};
+    margin: 0 0.2rem;
+    &:hover{
+        background-color: ${(props) => props.theme.color.gray000};
+    }
+`;
+export { PrevNext, Page };

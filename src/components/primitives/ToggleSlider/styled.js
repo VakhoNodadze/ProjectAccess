@@ -37,7 +37,7 @@ const Label = styled.label `
         height: 0;
     }
     & input:checked + ${Slider}{
-        background-color: ${(props) => (props.color ? props.color : props.theme.color.lightBlue)};
+        background-color: #6e8ed9;
     }
     & input:checked + ${Slider}:before{
         transform: translateX(20px);

@@ -1,39 +1,24 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import _ from 'lodash';
 
-import { generatePageRange } from '../../utils/pagination';
+import { PrevNext, Page } from './styled';
 
-import { StyledContainer } from './styled';
+const Pagination = ({pageSize, itemsCount, onPageChange, currentPage, onPrevPage, onNextPage}) => {
+  const pageCount = Math.ceil(itemsCount / pageSize);
+  if (pageCount === 1) {return null;}
+  const pages = _.range(1, pageCount + 1);
 
-const Pagination = ({ size, params, onChange }) => {
-  if (!size || !params.limit) {return null;}
-  const paginate = generatePageRange(params.page, size, params.limit) || [];
-
-  return (
-    <StyledContainer hidden={!paginate.length}>
-      {paginate.map((item, i) => (
-        <React.Fragment key={`li-${i}`}>
-          {typeof item === 'number' ? (
-            <li 
-              className={item === params.page ? 'item active' : 'item'} 
-              onClick={() => onChange({ ...params, page: item })} role="button" tabIndex={0} style={{ outline: 'none' }}>
-              {item}
-            </li>
-          ) : (
-            <li style={{ pointerEvents: 'none' }}>{item}</li>
-          )}
-        </React.Fragment>
-      ))}
-    </StyledContainer>
-  );
+  return <nav style={{display: 'flex', justifyContent: 'flex-end'}}>
+    <ul style={{listStyleType: 'none', display: 'flex'}}>
+      <PrevNext onClick={() => onPrevPage()}>Previous</PrevNext>
+      {pages.map((page) =>
+        <Page key={page} onClick={() => onPageChange(page)} active={page === currentPage}>
+          {page}
+        </Page>)
+      }
+      <PrevNext onClick={() => onNextPage()}>Next</PrevNext>
+    </ul>
+  </nav>;
 };
 
-Pagination.propTypes = {
-  onChange: PropTypes.func
-};
-
-Pagination.defaultProps = {
-  onChange: () => {}
-};
-
-export default memo(Pagination);
+export default Pagination;

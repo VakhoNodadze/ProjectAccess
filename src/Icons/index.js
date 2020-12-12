@@ -1,0 +1,11 @@
+export { default as Close } from './Close';
+export { default as Delete } from './Delete';
+export { default as DownArrow } from './DownArrow';
+export { default as Email } from './Email';
+export { default as Face } from './Face';
+export { default as Key } from './Key';
+export { default as Search } from './Search';
+export { default as Settings } from './Settings';
+export { default as User } from './User';
+export { default as Garbage } from './Garbage';
+export { default as IconItem } from './IconItem';
