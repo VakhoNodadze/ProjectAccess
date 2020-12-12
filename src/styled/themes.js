@@ -29,6 +29,7 @@ export const themes = {
     color: {
       // main
       white: '#fff',
+      textColor: '#fff',
       backgroundPr: '#fff',
       backgroundSec: '#F3F3F3',
       divideBg: '#D8D8D8',
@@ -42,7 +43,9 @@ export const themes = {
       gray600: '#707070',
       purple: '#7E7EF1',
       blue: '#305ECA',
-      input: '#33A3DC'
+      input: '#33A3DC',
+      textBlue: '#44A0D3',
+      red: '#ff6666'
     },
     radius: { none: 0, sm: 4, md: 8, lg: 12, xl: 16, rounded: '100rem' },
     space: baseline,
@@ -230,6 +233,7 @@ export const themes = {
     color: {
       // main
       white: '#fff',
+      textColor: '#fff',
       backgroundPr: '#fff',
       backgroundSec: '#F3F3F3',
       divideBg: '#D8D8D8',
@@ -243,7 +247,9 @@ export const themes = {
       gray600: '#707070',
       purple: '#7E7EF1',
       blue: '#305ECA',
-      input: '#33A3DC'
+      input: '#33A3DC',
+      textBlue: '#44A0D3',
+      red: '#ff6666'
     },
     radius: { none: 0, sm: 4, md: 8, lg: 12, xl: 16, rounded: '100rem' },
     space: baseline,

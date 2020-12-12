@@ -11,18 +11,23 @@ import Grid from '../primitives/Grid';
 import Divider from '../primitives/Divider';
 import Users from '../Users';
 import Text from '../primitives/Text';
-import AddUserModal from '../AddUserModal';
+import AddUserModal from '../Modals/AddUserModal';
+import DeleteUserModal from '../Modals/DeleteUserModal';
 import Select from '../primitives/Select';
+
+const PER_PAGE = [{ label: 5, value: 5 }, { label: 10, value: 10 }, { label: 15, value: 15 }];
 
 const Table = ({theme}) => {
   const [addToast, renderToasts] = useToasts();
 
   const [userList, setUserList] = useState(users);
+  const [userToDelete, setUserToDelete] = useState(null);
   const [curPage, setCurPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [sortList, setSortList] = useState({ path: "User", order: "asc" });
 
-  const [openAddModal, setOpenAddModal] = useState(false);
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
   const getPagedData = () => {
 
@@ -37,15 +42,24 @@ const Table = ({theme}) => {
   const getRandomInt = (max) => {
     return Math.floor(Math.random() * Math.floor(max)) + 1;
   };
-  const handleAddUser = (data) => {
+
+  // user add
+  const handleUserAdd = (data) => {
     const fullName = data.first_name + data.last_name;
     const newUser = {_id: getRandomInt(1000), 
       avatar: User, name: fullName, email: data.email, role: data.role, active: true};
     setUserList((prevUsers) => 
-      [...prevUsers, newUser]);
+      [newUser, ...prevUsers]);
     addToast('success', `${fullName} has been added!`);
   };
 
+  // user delete
+  const handleUserDelete = () => {
+    const newUsers = userList.filter((user) => user._id !== userToDelete._id);
+    setUserList(newUsers);
+  };
+
+  // pagination controll
   const handlePageChange = (newPage) => {
     setCurPage(newPage);
   };
@@ -57,16 +71,30 @@ const Table = ({theme}) => {
     setCurPage((prevPage) => prevPage + 1);
   };
 
+  // modal opens
   const handleAddModalOpen = () => {
-    setOpenAddModal(true);
+    setAddModalOpen(true);
   };
 
-  //render modal
+  const handleDeleteModalOpen = () => {
+    setDeleteModalOpen(true);
+  };
+
+  //render modals
   const renderAddUserModal = () => (
     <AddUserModal
-      isOpen={openAddModal}
-      onClose={() => setOpenAddModal(false)}
-      onAddUser={handleAddUser}
+      isOpen={addModalOpen}
+      onClose={() => setAddModalOpen(false)}
+      onUserAdd={handleUserAdd}
+    />
+  );
+
+  const renderDeleteUserModal = () => (
+    <DeleteUserModal
+      isOpen={deleteModalOpen}
+      onClose={() => setDeleteModalOpen(false)}
+      userToDelete={userToDelete}
+      onUserDelete={handleUserDelete}
     />
   );
   
@@ -106,10 +134,11 @@ const Table = ({theme}) => {
           <Divider style={{backgroundColor: theme.color.divideBg, height: 2}} />
         </Grid.Item>
       </Grid>
-      <Users data={getPagedData()} />
+      <Users data={getPagedData()} onDeleteModalOpen={handleDeleteModalOpen} setUserToDelete={setUserToDelete} />
       <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '3rem'}}>
         <Text>
           Records on Page
+          <Select options={PER_PAGE} onChange={(e) => setItemsPerPage(e.target.value)} />
         </Text>
         <Pagination
           itemsCount={userList.length}
@@ -120,7 +149,8 @@ const Table = ({theme}) => {
           onNextPage={handleNextPage}
         />
       </div>
-      {openAddModal && renderAddUserModal()}
+      {addModalOpen && renderAddUserModal()}
+      {deleteModalOpen && renderDeleteUserModal()}
       {renderToasts()}
     </div>
   );

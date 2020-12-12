@@ -2,23 +2,22 @@ import React from 'react';
 import { withTheme } from 'styled-components';
 import { useForm } from "react-hook-form";
 
-import Input from '../primitives/Input';
-import Modal from '../primitives/Modal';
-import Grid from '../primitives/Grid';
-import Button from '../primitives/Button';
-import Select from '../primitives/Select';
-import { Face, Email, Key } from '../../Icons';
-import { required, emailRegex } from '../../utils/validator';
+import Input from '../../primitives/Input';
+import Modal from '../../primitives/Modal';
+import Grid from '../../primitives/Grid';
+import Button from '../../primitives/Button';
+import Select from '../../primitives/Select';
+import { Face, Email, Key } from '../../../Icons';
 
 
 const ROLES = [{ label: 'Role', value: '' }, { label: 'Admin', value: 'Admin' }, { label: 'User', value: 'User' }];
 
-const AddUserModal = ({ isOpen, onClose, onAddUser, theme }) => {
+const AddUserModal = ({ isOpen, onClose, onUserAdd, theme }) => {
   const { handleSubmit, register, errors } = useForm();
 
   const onSubmit = (data) => {
     console.log('data', data);
-    onAddUser(data);
+    onUserAdd(data);
     onClose(false);
   };
     
@@ -62,7 +61,7 @@ const AddUserModal = ({ isOpen, onClose, onAddUser, theme }) => {
               <Key />
             </Grid.Item>
             <Grid.Item xs={6}>
-              <Select options={ROLES} register={register({ required: true })} name="role" errors={errors} width="280px" />
+              <Select options={ROLES} register={register({ required: true })} name="role" errors={errors} width='100%' />
             </Grid.Item>
           </Grid>
           <Grid>

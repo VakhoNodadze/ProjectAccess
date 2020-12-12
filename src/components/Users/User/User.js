@@ -8,9 +8,15 @@ import Avatar from '../../primitives/Avatar';
 import Toggler from '../../primitives/ToggleSlider';
 import Divider from '../../primitives/Divider';
 
-const User = ({avatar, fullName, email, role, active, theme}) => {
-  const [ isActive, setIsActive ] = useState(active);
+const User = ({_id, avatar, fullName, email, role, status, onDeleteModalOpen, setUserToDelete, theme}) => {
+  const [ isActive, setIsActive ] = useState(status);
 
+  const onDeleteModal = () => {
+    onDeleteModalOpen();
+    setUserToDelete({_id, fullName, status});
+  };
+
+  // render key
   const renderKey = () => {
     if(isActive) {
       return <div 
@@ -53,7 +59,7 @@ const User = ({avatar, fullName, email, role, active, theme}) => {
         <Grid.Item xs={2} style={{alignItems: 'flex-end'}}>
           <div style={{display: 'flex'}}>
             <IconItem name="Settings" style={{marginRight: '1.5rem'}} />
-            <IconItem name="Garbage" />
+            <IconItem name="Garbage" onClick={() => onDeleteModal()} />
           </div>
         </Grid.Item>
       </Grid>
