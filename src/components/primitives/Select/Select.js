@@ -302,7 +302,7 @@ const Select = ({
 
   const renderSearchBox = () => {
     return (
-      <div style={{ padding: '6px 12px 12px 12px' }}>
+      <div style={{ padding: '6px 0.7rem 0.7rem 0.7rem' }}>
         <StyledSearchBox
           id={id}
           ref={inputRef}
@@ -370,7 +370,7 @@ const Select = ({
             ))}
             {filteredOptions.length === 0 && (
               <div style={{ padding: '4px', textAlign: 'center' }}>
-                <small style={{ fontSize: '12px', color: 'rgba(0,0,0, .34)' }}>Empty</small>
+                <small style={{ fontSize: '0.7rem', color: 'rgba(0,0,0, .34)' }}>Empty</small>
               </div>
             )}
           </StyledOptions>

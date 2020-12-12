@@ -39,7 +39,7 @@ const Button = ({
       onClick={handleClick}
       {...rest}
     >
-      {renderContent()}
+      <div>{children}</div>
     </StyledContainer>
   );
 };

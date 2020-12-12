@@ -121,7 +121,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${(props) => props.theme.fonts.bold};
   }
 
-  .intrro-modal {
+  .modal {
     .content {
       color: ${(props) => props.theme.color.text};
 
@@ -131,7 +131,7 @@ const GlobalStyle = createGlobalStyle`
       }
 
       h3 {
-        font-size: 14px;
+        font-size: 0.8rem;
       }
 
     }
@@ -169,14 +169,14 @@ const GlobalStyle = createGlobalStyle`
     p {
       line-height: 1.4;
       margin: 0;
-      margin-bottom: 12px;
+      margin-bottom: 0.7rem;
     }
     br {
       display: none;
     }
     ul {
       line-height: 1;
-      margin-bottom: 12px;
+      margin-bottom: 0.7rem;
       li {
         margin: 0;
         line-height: 1.75;

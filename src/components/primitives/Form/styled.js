@@ -19,8 +19,8 @@ const StyledRequired = styled.div`
 `;
 
 const StyledLabel = styled.div`
-  padding: ${(props) => (props.padded ? '12px 6px' : '4px 6px')};
-  font-size: 12px;
+  padding: ${(props) => (props.padded ? '0.7rem 6px' : '4px 6px')};
+  font-size: 0.7rem;
   line-height: 1;
   color: ${(props) => (props.error ? '#ea3d53' : 'rgba(0, 0, 0, 0.3)')};
   display: flex;
@@ -38,14 +38,14 @@ const StyledTextArea = styled.textarea`
   border: 0;
   width: 100%;
   height: 100%;
-  padding: 12px 14px;
+  padding: 0.7rem 0.8rem;
 
   &:focus {
     outline: 0;
   }
 
   &::placeholder {
-    font-size: 12px;
+    font-size: 0.7rem;
     color: rgba(0, 0, 0, 0.3);
   }
 `;
@@ -60,7 +60,7 @@ const StyledInputAbsoluteRight = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  font-size: 0.7rem;
 `;
 
 export {

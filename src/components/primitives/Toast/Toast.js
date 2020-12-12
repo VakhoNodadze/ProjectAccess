@@ -1,58 +1,59 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react'
+import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 
-import { sizes, positions, variants } from '../../../styled/oneOf';
+import { sizes, positions } from '../../../styled/oneOf'
 
-import { StyledContainer, StyledContent } from './styled';
+import { StyledContainer, StyledContent } from './styled'
 
-import ToastContainer from './ToastContainer';
-
-import useToasts from '../../hooks/useToasts';
-
-const Toast = ({ id, content, size, position, variant, ...rest }) => {
-  const { removeToast } = useToasts();
-
-  const handleRemove = () => {
-    removeToast(id);
-  };
+const Toast = ({
+  visible, onHide, content, size, position, currentIndex, ...rest
+}) => {
+  let timer
 
   useEffect(
     () => {
-      const timer = setTimeout(() => {
-        removeToast(id);
-      }, 5000);
-
-      return () => {
-        clearTimeout(timer);
-      };
+      clearTimeout(timer)
+      if (visible) {
+        timer = setTimeout(() => {
+          onHide()
+        }, 4000)
+      }
+      return () => clearTimeout(timer)
     },
-    [id, removeToast]
-  );
+    [visible]
+  )
 
-  return (
-    <StyledContainer position={position} onClick={handleRemove} {...rest}>
-      <StyledContent size={size} variant={variant}>
-        {content}
-      </StyledContent>
-    </StyledContainer>
-  );
-};
+  if (visible) {
+    return ReactDOM.createPortal(
+      <StyledContainer position={position} currentIndex={currentIndex} onClick={onHide}>
+        <StyledContent size={size} {...rest}>
+          {content}
+        </StyledContent>
+      </StyledContainer>,
+      document.body
+    )
+  }
+
+  return null
+}
 
 Toast.propTypes = {
-  id: PropTypes.number.isRequired,
+  visible: PropTypes.bool,
+  onHide: PropTypes.func,
   content: PropTypes.string,
   size: PropTypes.oneOf(sizes),
   position: PropTypes.oneOf(positions),
-  variant: PropTypes.oneOf(variants)
-};
+  currentIndex: PropTypes.number
+}
 
 Toast.defaultProps = {
+  visible: false,
+  onHide: null,
   content: '',
   size: 'default',
-  position: 'top right',
-  variant: 'default'
-};
+  position: 'top center',
+  currentIndex: 0
+}
 
-Toast.Container = ToastContainer;
-
-export default Toast;
+export default Toast

@@ -35,11 +35,11 @@ const StyledOverlay = styled.div`
 `;
 const StyledContainer = styled.div`
   position: absolute;
-  top: ${(props) => (props.scrolling ? '8%' : 'unset')};
-  margin-bottom: ${(props) => (props.scrolling ? '8%' : 'unset')};
+  top: unset;
+  margin-bottom: unset;
   min-height: 200px;
   min-width: 240px;
-  max-height: ${(props) => (props.scrolling ? 'unset' : '90vh')};
+  max-height: 90vh;
   max-width: 96%;
   width: ${(props) => {
     switch (props.size) {
@@ -76,7 +76,7 @@ const StyledContainer = styled.div`
   }};
 
   .content {
-    max-height: ${(props) => (props.scrolling ? 'unset' : '80vh')};
+    max-height: 80vh;
   }
 `;
 

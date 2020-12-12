@@ -3,6 +3,7 @@ import { withTheme } from 'styled-components';
 
 import { users } from '../../utils/data';
 import { paginate } from '../../utils/paginate';
+import useToasts from "../../hooks/useToasts";
 
 import Pagination from '../primitives/Pagination';
 import Grid from '../primitives/Grid';
@@ -12,6 +13,8 @@ import Text from '../primitives/Text';
 import AddUserModal from '../AddUserModal';
 
 const Table = ({theme}) => {
+  const [addToast, renderToasts] = useToasts();
+
   const [userList, setUserList] = useState(users);
   const [curPage, setCurPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);

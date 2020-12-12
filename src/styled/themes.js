@@ -67,8 +67,8 @@ export const themes = {
       h2: '21px',
       h3: '16px',
       body: '16px',
-      body2: '14px',
-      caption: '12px'
+      body2: '0.8rem',
+      caption: '0.7rem'
     },
     lineHeights: {
       h1: '56px',
@@ -83,9 +83,9 @@ export const themes = {
     type: 'light',
     fontSize: {
       tiny: '11px',
-      mini: '12px',
+      mini: '0.7rem',
       small: '13px',
-      default: '14px',
+      default: '0.8rem',
       big: '16px',
       large: '18px'
     },
@@ -267,8 +267,8 @@ export const themes = {
       h2: '21px',
       h3: '16px',
       body: '16px',
-      body2: '14px',
-      caption: '12px'
+      body2: '0.8rem',
+      caption: '0.7rem'
     },
     lineHeights: {
       h1: '56px',
@@ -283,9 +283,9 @@ export const themes = {
     type: 'dark',
     fontSize: {
       tiny: '11px',
-      mini: '12px',
+      mini: '0.7rem',
       small: '13px',
-      default: '14px',
+      default: '0.8rem',
       big: '16px',
       large: '18px'
     },

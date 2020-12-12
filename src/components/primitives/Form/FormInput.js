@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { useFormContext } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 import Input from '../Input';
 import * as icons from '../../../Icons';
@@ -8,7 +8,7 @@ import * as icons from '../../../Icons';
 import { StyledInputWrapper, StyledInputAbsoluteRight } from './styled';
 
 export const FormInput = ({ name, validate, showValidator, compact, ...props }) => {
-  const { register, errors, getValues } = useFormContext();
+  const { register, errors, getValues } = useForm();
   const error = errors[name];
   const values = getValues();
 

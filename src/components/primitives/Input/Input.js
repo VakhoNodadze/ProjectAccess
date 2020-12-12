@@ -73,7 +73,7 @@ const Input = ({
           />
           <label htmlFor={name + defaultValue} style={{ justifyContent: checkmark ? 'flex-start' : 'center' }}>
             {checkmark && <StyledRadioCheckmark className="checkmark" />}
-            <span style={{ margin: checkmark ? '0 12px 0 10px' : 0 }}>{label}</span>
+            <span style={{ margin: checkmark ? '0 0.7rem 0 10px' : 0 }}>{label}</span>
           </label>
         </StyledRadioContent>
       </StyledRadioContainer>

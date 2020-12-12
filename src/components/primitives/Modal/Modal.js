@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-import ModalHeader from './ModalHeader';
 import ModalContent from './ModalContent';
 import ModalActions from './ModalActions';
 
@@ -16,7 +15,6 @@ const Modal = ({
   closeIconColor,
   children,
   size,
-  scrolling,
   closeConfirmation,
   Confirmation
 }) => {
@@ -43,11 +41,10 @@ const Modal = ({
     return ReactDOM.createPortal(
       <StyledOverlay isOpen={isOpen} onClick={handleClose} fadeType={fadeType}>
         <StyledContainer
-          className="intrro-modal"
+          className="modal"
           onClick={(e) => e.stopPropagation()}
           fadeType={fadeType}
           size={size}
-          scrolling={scrolling}
         >
           {hasCloseIcon && (
             <StyledClose onClick={handleClose}>
@@ -71,7 +68,6 @@ Modal.propTypes = {
   hasCloseIcon: PropTypes.bool,
   closeIconColor: PropTypes.string,
   size: PropTypes.string,
-  scrolling: PropTypes.bool,
   closeConfirmation: PropTypes.bool,
   Confirmation: PropTypes.object
 };
@@ -82,12 +78,10 @@ Modal.defaultProps = {
   hasCloseIcon: true,
   closeIconColor: null,
   size: 'default',
-  scrolling: false,
   closeConfirmation: false,
   Confirmation: null
 };
 
-Modal.Header = ModalHeader;
 Modal.Content = ModalContent;
 Modal.Actions = ModalActions;
 

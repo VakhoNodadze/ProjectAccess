@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const Info = ({ color }) => {
   const style = {
@@ -7,7 +7,7 @@ export const Info = ({ color }) => {
     strokeLinecap: 'round',
     strokeLinejoin: 'round',
     strokeWidth: '2px'
-  }
+  };
 
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="2.01" height="10" viewBox="0 0 2.01 10">
@@ -16,7 +16,7 @@ export const Info = ({ color }) => {
         <path id="prefix__Line_647" d="M0 0L0.01 0" style={style} data-name="Line 647" transform="translate(12 8)" />
       </g>
     </svg>
-  )
-}
+  );
+};
 
-export default Info
+export default Info;

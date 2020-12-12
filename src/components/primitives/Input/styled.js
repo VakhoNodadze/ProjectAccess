@@ -1,20 +1,20 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 const StyledContainer = styled.div`
   position: relative;
   width: 100%;
-  /* min-width: ${props => {
+  /* min-width: ${(props) => {
     switch (props.size) {
-      case 'tiny':
-        return '80px'
-      case 'mini':
-        return '250px'
-      default:
-        return '300px'
+    case 'tiny':
+      return '80px';
+    case 'mini':
+      return '250px';
+    default:
+      return '300px';
     }
   }}; */
-  margin-top: ${props => (props.label ? '16px' : 0)};
-`
+  margin-top: ${(props) => (props.label ? '16px' : 0)};
+`;
 
 const StyledContent = styled.div`
   /* position: absolute;
@@ -22,47 +22,47 @@ const StyledContent = styled.div`
   left: 0;
   right: 0;
   height: 100%; */
-  height: ${props => props.theme.elementSize[props.size]};
+  height: ${(props) => props.theme.elementSize[props.size]};
 
-  ${props =>
+  ${(props) =>
     !props.label &&
     css`
-      border: ${props => (props.basic ? '0' : `1px solid ${props.theme.color.border}`)};
-      border-bottom: 1px solid ${props => props.theme.color.border};
+      border: ${(props) => (props.basic ? '0' : `1px solid ${props.theme.color.border}`)};
+      border-bottom: 1px solid ${(props) => props.theme.color.border};
     `};
 
-  border-radius: ${props => (props.basic ? '0' : props.theme.borderRadius.default)};
-  background-color: ${props => props.theme.color.elementBg};
-  border-color: ${props => (props.error ? 'red' : props.theme.color.border)};
-  z-index: ${props => (props.isOpen ? '100' : '0')};
-  cursor: ${props => (props.search ? 'inherit' : 'pointer')};
-  transition: all ${props => props.theme.duration.default}ms ${props => props.theme.animation.easeInOut};
+  border-radius: ${(props) => (props.basic ? '0' : props.theme.borderRadius.default)};
+  background-color: ${(props) => props.theme.color.elementBg};
+  border-color: ${(props) => (props.error ? 'red' : props.theme.color.border)};
+  z-index: ${(props) => (props.isOpen ? '100' : '0')};
+  cursor: ${(props) => (props.search ? 'inherit' : 'pointer')};
+  transition: all ${(props) => props.theme.duration.default}ms ${(props) => props.theme.animation.easeInOut};
 
   &:hover {
-    border-color: ${props => props.theme.color.borderHover};
+    border-color: ${(props) => props.theme.color.borderHover};
   }
 
-  ${props => {
+  ${(props) => {
     switch (props.attached) {
-      case 'left':
-        return css`
+    case 'left':
+      return css`
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
           border-left-color: transparent;
-        `
-      default:
-        return null
+        `;
+    default:
+      return null;
     }
   }};
 
-  ${props =>
+  ${(props) =>
     props.isFocused &&
     css`
       border-color: ${props.theme.color.primary} !important;
     `};
 
   & > .icon {
-    padding: 0 ${props => props.theme.spacing.big}px;
+    padding: 0 ${(props) => props.theme.spacing.big}px;
   }
 
   ${({ circular, theme, size }) =>
@@ -70,7 +70,7 @@ const StyledContent = styled.div`
     css`
       border-radius: ${theme.spacing[size] * 4}px;
     `};
-`
+`;
 
 const StyledInput = styled.input`
   /* position: absolute;
@@ -82,15 +82,15 @@ const StyledInput = styled.input`
   height: 100%;
   width: 100%;
 
-  padding: 0 ${props => props.theme.spacing[props.size] * 2}px;
+  padding: 0 ${(props) => props.theme.spacing[props.size] * 2}px;
 
-  ${props =>
+  ${(props) =>
     props.hasIcon &&
     css`
-      padding-left: ${props => props.theme.spacing.extraHuge}px;
+      padding-left: ${(props) => props.theme.spacing.extraHuge}px;
     `};
 
-  ${props =>
+  ${(props) =>
     props.paddingLeft > 0 &&
     css`
       padding-left: ${props.paddingLeft}px;
@@ -98,8 +98,8 @@ const StyledInput = styled.input`
 
   border: none;
   background: transparent;
-  font-size: 14px;
-  color: ${props => props.theme.color.text};
+  font-size: 0.8rem;
+  color: ${(props) => props.theme.color.text};
 
   &:focus {
     outline: 0;
@@ -109,9 +109,9 @@ const StyledInput = styled.input`
     color: rgba(0, 0, 0, 0.34);
   }
   &::placeholder {
-    color: ${props => props.theme.color.placeholder};
+    color: ${(props) => props.theme.color.placeholder};
   }
-`
+`;
 
 const StyledPlaceholder = styled.div`
   position: absolute;
@@ -122,11 +122,11 @@ const StyledPlaceholder = styled.div`
   display: flex;
   align-items: center;
   padding: 0 20px;
-  padding-left: ${props => (props.hasIcon ? `${props.theme.spacing.extraHuge}px` : `${props.theme.spacing.big}px`)};
+  padding-left: ${(props) => (props.hasIcon ? `${props.theme.spacing.extraHuge}px` : `${props.theme.spacing.big}px`)};
   border-radius: 6px;
-  font-size: 14px;
-  color: ${props => (props.color ? props.color : 'rgba(0, 0, 0, 0.3)')};
-`
+  font-size: 0.8rem;
+  color: ${(props) => (props.color ? props.color : 'rgba(0, 0, 0, 0.3)')};
+`;
 
 const StyledIcon = styled.div`
   position: absolute;
@@ -135,7 +135,7 @@ const StyledIcon = styled.div`
   bottom: 0;
   display: flex;
   align-items: center;
-`
+`;
 
 const StyledSpinner = styled.div`
   position: absolute;
@@ -145,19 +145,19 @@ const StyledSpinner = styled.div`
   padding: 0 20px;
   line-height: 48px;
   z-index: 100;
-`
+`;
 
 const StyledLabel = styled.label`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: ${props => (props.active ? 1 : 0)};
-  font-size: 14px;
+  z-index: ${(props) => (props.active ? 1 : 0)};
+  font-size: 0.8rem;
   color: rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
-  border-radius: ${props => props.theme.borderRadius.default};
-  /* background-color: ${props => (props.active ? '#fff' : 'none')}; */
+  border-radius: ${(props) => props.theme.borderRadius.default};
+  /* background-color: ${(props) => (props.active ? '#fff' : 'none')}; */
   cursor: text;
   transform: translate(0, 0) scale(1);
   transform-origin: top left;
@@ -165,30 +165,30 @@ const StyledLabel = styled.label`
 
   height: 100%;
 
-  padding: 0 ${props => props.theme.spacing[props.size] * 2}px;
+  padding: 0 ${(props) => props.theme.spacing[props.size] * 2}px;
 
-  ${props =>
+  ${(props) =>
     props.active &&
     css`
       transform: translate(4px, -${props.theme.spacing[props.size] * 2 + 2}px) scale(0.75);
     `};
-`
+`;
 
 // radio
 const StyledRadioContainer = styled.div`
   position: relative;
   min-width: 38px;
-  height: ${props => props.theme.elementSize[props.size]};
+  height: ${(props) => props.theme.elementSize[props.size]};
 
   & > .content {
     & > label {
-      border-radius: ${props => props.theme.borderRadius[props.size]};
+      border-radius: ${(props) => props.theme.borderRadius[props.size]};
     }
   }
-`
+`;
 const StyledRadioContent = styled.div`
   height: 100%;
-`
+`;
 
 const StyledRadio = styled.input.attrs({ type: 'radio' })`
   opacity: 0;
@@ -201,10 +201,10 @@ const StyledRadio = styled.input.attrs({ type: 'radio' })`
     justify-content: center;
     align-items: center;
     height: 100%;
-    font-size: 12px;
+    font-size: 0.7rem;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.54);
-    border: ${props => (props.basic ? '0' : 'solid 1px rgba(0, 0, 0, 0.15)')};
+    border: ${(props) => (props.basic ? '0' : 'solid 1px rgba(0, 0, 0, 0.15)')};
     margin: 0;
     cursor: pointer;
   }
@@ -218,13 +218,13 @@ const StyledRadio = styled.input.attrs({ type: 'radio' })`
       background-color: #2675fe;
     }
   }
-`
+`;
 
 const StyledRadioCheckmark = styled.div`
   position: relative;
   height: 18px;
   width: 18px;
-  margin-left: 12px;
+  margin-left: 0.7rem;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.34);
   border-radius: 50%;
@@ -239,18 +239,18 @@ const StyledRadioCheckmark = styled.div`
     border-radius: 50%;
     background: white;
   }
-`
+`;
 
 // checkbox
-const StyledCheckboxContainer = styled.div``
+const StyledCheckboxContainer = styled.div``;
 const StyledCheckboxContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   & > label {
-    border-color: ${props => (props.error ? 'red' : props.theme.color.border)} !important;
+    border-color: ${(props) => (props.error ? 'red' : props.theme.color.border)} !important;
   }
-`
+`;
 
 const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
   opacity: 0;
@@ -281,7 +281,7 @@ const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
       display: block;
     }
   }
-`
+`;
 
 const StyledFieldset = styled.fieldset`
   top: -5px;
@@ -292,12 +292,10 @@ const StyledFieldset = styled.fieldset`
   padding: 0 8px;
   overflow: hidden;
   position: absolute;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: inherit;
-  border-color: ${props => (props.error ? props.theme.color.danger : props.theme.color.border)};
   pointer-events: none;
-`
+  border: 0;
+  border-bottom: 1px solid ${(props) => (props.error ? props.theme.color.danger : props.theme.color.border)};
+`;
 
 const StyledLegend = styled.legend`
   width: auto;
@@ -310,12 +308,12 @@ const StyledLegend = styled.legend`
   transition: max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   visibility: hidden;
 
-  ${props =>
+  ${(props) =>
     props.active &&
     css`
       max-width: unset;
     `};
-`
+`;
 
 export {
   StyledContainer,
@@ -334,4 +332,4 @@ export {
   StyledCheckbox,
   StyledFieldset,
   StyledLegend
-}
+};
