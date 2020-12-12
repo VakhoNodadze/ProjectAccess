@@ -153,7 +153,7 @@ const StyledLabel = styled.label`
   left: 0;
   z-index: ${(props) => (props.active ? 1 : 0)};
   font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.3);
+  color: ${(props) => (props.active ? props.theme.color.input : 'rgba(0, 0, 0, 0.3)')};
   display: flex;
   align-items: center;
   border-radius: ${(props) => props.theme.borderRadius.default};
@@ -294,7 +294,7 @@ const StyledFieldset = styled.fieldset`
   position: absolute;
   pointer-events: none;
   border: 0;
-  border-bottom: 1px solid ${(props) => (props.error ? props.theme.color.danger : props.theme.color.border)};
+  border-bottom: 1px solid ${(props) => (props.error ? props.theme.color.danger : props.theme.color.gray100)};
 `;
 
 const StyledLegend = styled.legend`

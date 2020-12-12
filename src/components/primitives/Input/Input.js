@@ -6,15 +6,7 @@ import {
   StyledSpinner,
   StyledIcon,
   StyledInput,
-  StyledPlaceholder,
   StyledLabel,
-  StyledRadio,
-  StyledRadioContainer,
-  StyledRadioContent,
-  StyledRadioCheckmark,
-  StyledCheckboxContainer,
-  StyledCheckboxContent,
-  StyledCheckbox,
   StyledFieldset,
   StyledLegend
 } from './styled';
@@ -39,6 +31,7 @@ const Input = ({
   basic,
   checkmark,
   attached,
+  errors,
   rightLabel,
   circular,
   ...props
@@ -57,49 +50,6 @@ const Input = ({
   };
 
   const handleFocusToggle = () => setIsFocused(!isFocused);
-
-  if (type === 'radio') {
-    return (
-      <StyledRadioContainer size={size} ref={containerRef}>
-        <StyledRadioContent className="content" error={error} checkmark={checkmark}>
-          <StyledRadio
-            ref={register}
-            basic={basic}
-            value={defaultValue || ''}
-            id={name + defaultValue}
-            name={name}
-            onChange={handleChange}
-            {...props}
-          />
-          <label htmlFor={name + defaultValue} style={{ justifyContent: checkmark ? 'flex-start' : 'center' }}>
-            {checkmark && <StyledRadioCheckmark className="checkmark" />}
-            <span style={{ margin: checkmark ? '0 0.7rem 0 10px' : 0 }}>{label}</span>
-          </label>
-        </StyledRadioContent>
-      </StyledRadioContainer>
-    );
-  }
-
-  if (type === 'checkbox') {
-    return (
-      <StyledCheckboxContainer>
-        <StyledCheckboxContent error={error}>
-          <StyledCheckbox
-            ref={register}
-            value={defaultValue || ''}
-            id={name + defaultValue}
-            name={name}
-            disabled={disabled}
-            onChange={handleChange}
-            {...props}
-          />
-          <label htmlFor={name + defaultValue}>
-            <Check />
-          </label>
-        </StyledCheckboxContent>
-      </StyledCheckboxContainer>
-    );
-  }
 
   return (
     <StyledContainer size={size} label={label} ref={containerRef}>

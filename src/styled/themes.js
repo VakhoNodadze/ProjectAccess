@@ -41,7 +41,8 @@ export const themes = {
       gray400: '#666666',
       gray600: '#707070',
       purple: '#7E7EF1',
-      blue: '#305ECA'
+      blue: '#305ECA',
+      input: '#33A3DC'
     },
     radius: { none: 0, sm: 4, md: 8, lg: 12, xl: 16, rounded: '100rem' },
     space: baseline,
@@ -241,7 +242,8 @@ export const themes = {
       gray400: '#666666',
       gray600: '#707070',
       purple: '#7E7EF1',
-      blue: '#305ECA'
+      blue: '#305ECA',
+      input: '#33A3DC'
     },
     radius: { none: 0, sm: 4, md: 8, lg: 12, xl: 16, rounded: '100rem' },
     space: baseline,

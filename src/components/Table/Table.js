@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { withTheme } from 'styled-components';
 
+import User from '../../resources/images/UserProfile.png';
 import { users } from '../../utils/data';
 import { paginate } from '../../utils/paginate';
 import useToasts from "../../hooks/useToasts";
@@ -11,6 +12,7 @@ import Divider from '../primitives/Divider';
 import Users from '../Users';
 import Text from '../primitives/Text';
 import AddUserModal from '../AddUserModal';
+import Select from '../primitives/Select';
 
 const Table = ({theme}) => {
   const [addToast, renderToasts] = useToasts();
@@ -32,8 +34,16 @@ const Table = ({theme}) => {
     return users;
   };
 
-  const handleAddModalOpen = () => {
-    setOpenAddModal(true);
+  const getRandomInt = (max) => {
+    return Math.floor(Math.random() * Math.floor(max)) + 1;
+  };
+  const handleAddUser = (data) => {
+    const fullName = data.first_name + data.last_name;
+    const newUser = {_id: getRandomInt(1000), 
+      avatar: User, name: fullName, email: data.email, role: data.role, active: true};
+    setUserList((prevUsers) => 
+      [...prevUsers, newUser]);
+    addToast('success', `${fullName} has been added!`);
   };
 
   const handlePageChange = (newPage) => {
@@ -47,11 +57,16 @@ const Table = ({theme}) => {
     setCurPage((prevPage) => prevPage + 1);
   };
 
+  const handleAddModalOpen = () => {
+    setOpenAddModal(true);
+  };
+
   //render modal
   const renderAddUserModal = () => (
     <AddUserModal
       isOpen={openAddModal}
       onClose={() => setOpenAddModal(false)}
+      onAddUser={handleAddUser}
     />
   );
   
@@ -106,6 +121,7 @@ const Table = ({theme}) => {
         />
       </div>
       {openAddModal && renderAddUserModal()}
+      {renderToasts()}
     </div>
   );
 };

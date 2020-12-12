@@ -119,7 +119,7 @@ const StyledContainer = styled.button`
   }
 
   &:active {
-    transform: scale(0.96);
+    transform: ${(props) => (props.isDisabled ? 'scale(1)' : 'scale(0.96)')};
   }
 `;
 

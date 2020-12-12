@@ -1,28 +1,28 @@
-import React, { useEffect } from 'react'
-import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
-import { sizes, positions } from '../../../styled/oneOf'
+import { sizes, positions } from '../../../styled/oneOf';
 
-import { StyledContainer, StyledContent } from './styled'
+import { StyledContainer, StyledContent } from './styled';
 
 const Toast = ({
   visible, onHide, content, size, position, currentIndex, ...rest
 }) => {
-  let timer
+  let timer;
 
   useEffect(
     () => {
-      clearTimeout(timer)
+      clearTimeout(timer);
       if (visible) {
         timer = setTimeout(() => {
-          onHide()
-        }, 4000)
+          onHide();
+        }, 4000);
       }
-      return () => clearTimeout(timer)
+      return () => clearTimeout(timer);
     },
     [visible]
-  )
+  );
 
   if (visible) {
     return ReactDOM.createPortal(
@@ -32,11 +32,11 @@ const Toast = ({
         </StyledContent>
       </StyledContainer>,
       document.body
-    )
+    );
   }
 
-  return null
-}
+  return null;
+};
 
 Toast.propTypes = {
   visible: PropTypes.bool,
@@ -45,7 +45,7 @@ Toast.propTypes = {
   size: PropTypes.oneOf(sizes),
   position: PropTypes.oneOf(positions),
   currentIndex: PropTypes.number
-}
+};
 
 Toast.defaultProps = {
   visible: false,
@@ -54,6 +54,6 @@ Toast.defaultProps = {
   size: 'default',
   position: 'top center',
   currentIndex: 0
-}
+};
 
-export default Toast
+export default Toast;
