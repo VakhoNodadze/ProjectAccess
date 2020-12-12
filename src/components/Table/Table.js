@@ -9,12 +9,15 @@ import Grid from '../primitives/Grid';
 import Divider from '../primitives/Divider';
 import Users from '../Users';
 import Text from '../primitives/Text';
+import AddUserModal from '../AddUserModal';
 
 const Table = ({theme}) => {
   const [userList, setUserList] = useState(users);
   const [curPage, setCurPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [sortList, setSortList] = useState({ path: "User", order: "asc" });
+
+  const [openAddModal, setOpenAddModal] = useState(false);
 
   const getPagedData = () => {
 
@@ -24,6 +27,10 @@ const Table = ({theme}) => {
     const users = paginate(sorted, curPage, itemsPerPage);
 
     return users;
+  };
+
+  const handleAddModalOpen = () => {
+    setOpenAddModal(true);
   };
 
   const handlePageChange = (newPage) => {
@@ -36,9 +43,18 @@ const Table = ({theme}) => {
   const handleNextPage = () => {
     setCurPage((prevPage) => prevPage + 1);
   };
+
+  //render modal
+  const renderAddUserModal = () => (
+    <AddUserModal
+      isOpen={openAddModal}
+      onClose={() => setOpenAddModal(false)}
+    />
+  );
   
   return (
     <div style={{backgroundColor: theme.color.backgroundSec, height: '85%', padding: '0 4rem'}}>
+      <button onClick={() => handleAddModalOpen()}>Open Modal</button>
       <Grid>
         <Grid.Item xs={1} />
         <Grid.Item xs={4}>
@@ -86,6 +102,7 @@ const Table = ({theme}) => {
           onNextPage={handleNextPage}
         />
       </div>
+      {openAddModal && renderAddUserModal()}
     </div>
   );
 };

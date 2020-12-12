@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
 
 import Input from '../Input';
-import * as icons from '../Icon';
+import * as icons from '../../../Icons';
 
 import { StyledInputWrapper, StyledInputAbsoluteRight } from './styled';
 

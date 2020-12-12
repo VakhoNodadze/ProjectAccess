@@ -30,7 +30,7 @@
       "default-param-last": "error",
       "default-case": "error",
       "curly": "error",
-      "complexity": ["error", 20],
+      "complexity": ["error", 24],
   //    "semi": 1
     }
   }

@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
-import Info from '../Icon/Info';
+import Info from '../../../Icons/Info';
 
 export const FormRequired = () => (
   <div

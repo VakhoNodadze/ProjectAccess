@@ -7,7 +7,7 @@ import ModalContent from './ModalContent';
 import ModalActions from './ModalActions';
 
 import { StyledOverlay, StyledContainer, StyledClose } from './styled';
-import Remove from '../Icon/Remove';
+import { Close } from '../../../Icons';
 
 const Modal = ({
   isOpen,
@@ -51,7 +51,7 @@ const Modal = ({
         >
           {hasCloseIcon && (
             <StyledClose onClick={handleClose}>
-              <Remove color={closeIconColor} />
+              <Close color={closeIconColor} />
             </StyledClose>
           )}
           {children}
