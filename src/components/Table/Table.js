@@ -8,6 +8,7 @@ import useToasts from "../../hooks/useToasts";
 import { Plus, DownArrow, UpArrow } from '../../Icons';
 
 import PlusButton from '../primitives/PlusButton';
+import Button from '../primitives/Button';
 import Pagination from '../primitives/Pagination';
 import Grid from '../primitives/Grid';
 import Divider from '../primitives/Divider';
@@ -19,7 +20,7 @@ import Select from '../primitives/Select';
 
 const PER_PAGE = [{ label: 5, value: 5 }, { label: 10, value: 10 }, { label: 15, value: 15 }];
 
-const Table = ({theme}) => {
+const Table = ({searchState, onThemeChange, isDark, theme}) => {
   const [addToast, renderToasts] = useToasts();
 
   const [userList, setUserList] = useState(users);
@@ -32,7 +33,13 @@ const Table = ({theme}) => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
   const getPagedData = () => {
-    const sorted = _.orderBy(userList, [sortList.path], [sortList.order]);
+    const filteredUsers = userList.filter((user) => {
+      return (
+        user.email.toLowerCase().indexOf(searchState.toLowerCase()) !== -1 || 
+        user.fullName.toLowerCase().indexOf(searchState.toLowerCase()) !== -1
+      );
+    });
+    const sorted = _.orderBy(filteredUsers, [sortList.path], [sortList.order]);
     const users = paginate(sorted, curPage, itemsPerPage);
     return users;
   };
@@ -54,7 +61,7 @@ const Table = ({theme}) => {
   const handleUserAdd = (data) => {
     const fullName = data.first_name + data.last_name;
     const newUser = {_id: getRandomInt(1000), 
-      avatar: User, name: fullName, email: data.email, role: data.role, status: true};
+      avatar: User, fullName, email: data.email, role: data.role, status: true};
     setUserList((prevUsers) => 
       [newUser, ...prevUsers]);
     addToast('success', `${fullName} has been added!`);
@@ -108,9 +115,17 @@ const Table = ({theme}) => {
   
   return (
     <div style={{backgroundColor: theme.color.backgroundSec, height: '85%', padding: '0 4rem'}}>
-      <PlusButton onClick={() => handleAddModalOpen()}>
-        <Plus />
-      </PlusButton>
+      <div style={{display: 'flex', justifyContent: 'space-between'}}>
+        <PlusButton onClick={() => handleAddModalOpen()}>
+          <Plus />
+        </PlusButton>
+        <Button size="small"
+          color="primary"
+          variant="contained"
+          onClick={() => onThemeChange()} style={{backgroundColor: theme.color.button}}>
+        Dark Mode {isDark === 'dark' ? 'On' : 'Off'}
+        </Button>
+      </div>
       <Grid>
         <Grid.Item xs={1} />
         <Grid.Item xs={4}>
@@ -126,7 +141,7 @@ const Table = ({theme}) => {
             onClick={() => handleOrderChange('role')}
             style={{
               color: theme.color.textSecondary, fontSize: theme.fontSize.h3, fontFamily: theme.fonts.semibold, 
-              cursor: 'pointer'
+              cursor: 'pointer' 
             }}>Role {(sortList.path === 'role' && sortList.order === 'asc') ? 
               <DownArrow color={theme.color.textSecondary} /> : <UpArrow color={theme.color.textSecondary} />}</h3>
         </Grid.Item>

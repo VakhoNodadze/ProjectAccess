@@ -27,11 +27,11 @@ const StyledContent = styled.div`
   ${(props) =>
     !props.label &&
     css`
-      border: ${(props) => (props.basic ? '0' : `1px solid ${props.theme.color.border}`)};
+      // border: ${(props) => (props.basic ? '0' : `1px solid ${props.theme.color.border}`)};
       border-bottom: 1px solid ${(props) => props.theme.color.border};
     `};
 
-  border-radius: ${(props) => (props.basic ? '0' : props.theme.borderRadius.default)};
+  // border-radius: ${(props) => (props.basic ? '0' : props.theme.borderRadius.default)};
   background-color: ${(props) => props.theme.color.elementBg};
   border-color: ${(props) => (props.error ? 'red' : props.theme.color.border)};
   z-index: ${(props) => (props.isOpen ? '100' : '0')};
@@ -106,7 +106,7 @@ const StyledInput = styled.input`
   }
   &:disabled {
     /* background-color: rgba(0, 0, 0, 0.008); */
-    color: rgba(0, 0, 0, 0.34);
+    color: ${(props) => props.theme.color.text};
   }
   &::placeholder {
     color: ${(props) => props.theme.color.placeholder};
@@ -125,7 +125,7 @@ const StyledPlaceholder = styled.div`
   padding-left: ${(props) => (props.hasIcon ? `${props.theme.spacing.extraHuge}px` : `${props.theme.spacing.big}px`)};
   border-radius: 6px;
   font-size: 0.8rem;
-  color: ${(props) => (props.color ? props.color : 'rgba(0, 0, 0, 0.3)')};
+  color: ${(props) => props.theme.color.placeholder};
 `;
 
 const StyledIcon = styled.div`
@@ -153,7 +153,7 @@ const StyledLabel = styled.label`
   left: 0;
   z-index: ${(props) => (props.active ? 1 : 0)};
   font-size: 0.8rem;
-  color: ${(props) => (props.active ? props.theme.color.input : 'rgba(0, 0, 0, 0.3)')};
+  color: ${(props) => (props.active ? props.theme.color.input : props.theme.color.placeholder)};
   display: flex;
   align-items: center;
   border-radius: ${(props) => props.theme.borderRadius.default};
@@ -294,7 +294,7 @@ const StyledFieldset = styled.fieldset`
   position: absolute;
   pointer-events: none;
   border: 0;
-  border-bottom: 1px solid ${(props) => (props.error ? props.theme.color.danger : props.theme.color.gray100)};
+  border-bottom: 1px solid ${(props) => (props.error ? props.theme.color.danger : props.theme.color.border)};
 `;
 
 const StyledLegend = styled.legend`

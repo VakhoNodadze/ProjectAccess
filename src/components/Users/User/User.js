@@ -37,10 +37,11 @@ const User = ({_id, avatar, fullName, email, role, status, onDeleteModalOpen, se
         </Grid.Item>
         <Grid.Item xs={4}>
           <Flex direction="column" align="flex-start">
-            <p style={{fontSize: theme.fontSize.h3}}>
+            <p style={{fontSize: theme.fontSize.h3, color: theme.color.text}}>
               {fullName}
             </p>
-            <span style={{fontFamily: theme.fonts.light, fontSize: theme.fontSize.h3}}>{email}</span>
+            <span style={{fontFamily: theme.fonts.light, fontSize: theme.fontSize.h3, 
+              color: theme.color.text}}>{email}</span>
           </Flex>
         </Grid.Item>
         <Grid.Item xs={3}>
@@ -48,7 +49,7 @@ const User = ({_id, avatar, fullName, email, role, status, onDeleteModalOpen, se
             <Grid.Item xs={2}>
               {role === 'Admin' && renderKey()}
             </Grid.Item>
-            <Grid.Item xs={2}>
+            <Grid.Item xs={2} style={{color: theme.color.text}}>
               {role}
             </Grid.Item>
           </Grid>
@@ -58,7 +59,7 @@ const User = ({_id, avatar, fullName, email, role, status, onDeleteModalOpen, se
         </Grid.Item>
         <Grid.Item xs={2} style={{alignItems: 'flex-end'}}>
           <div style={{display: 'flex'}}>
-            <IconItem name="Settings" style={{marginRight: '1.5rem'}} />
+            {isActive && <IconItem name="Settings" style={{marginRight: '1.5rem'}} />}
             <IconItem name="Garbage" onClick={() => onDeleteModal()} />
           </div>
         </Grid.Item>

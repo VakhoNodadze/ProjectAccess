@@ -9,10 +9,11 @@ import Main from './pages/Main';
 const App = () => {
 
   const [theme, setTheme] = useState(light);
-  const [background, setBackground] = useState(light.color.secondaryBG);
+  const [background, setBackground] = useState(light.color.backgroundPr);
 
   useEffect(() => {
-    setBackground(theme.color.secondaryBG);
+    setBackground(theme.color.backgroundPr);
+    console.log('THEME', theme.type);
   }, [theme]);
 
   const handleThemeChange = () => {
@@ -24,7 +25,7 @@ const App = () => {
     <ThemeProvider theme={themes[theme.type]}>
       <Flex direction="column" full height="100vh" style={{backgroundColor: background}}>
         <GlobalStyle />
-        <Main />
+        <Main onThemeChange={handleThemeChange} isDark={theme.type} />
       </Flex>
     </ThemeProvider>
   );

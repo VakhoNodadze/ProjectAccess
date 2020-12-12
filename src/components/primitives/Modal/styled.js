@@ -53,7 +53,7 @@ const StyledContainer = styled.div`
       return '600px';
     }
   }};
-  background-color: #fff;
+  background-color: ${(props) => props.theme.color.backgroundSec};
   border-radius: ${({ theme }) => theme.borderRadius.big};
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06);
   transform: ${(props) => {
@@ -87,7 +87,7 @@ const StyledContent = styled.div`
 
 const StyledHeader = styled.div`
   width: '100%';
-  color: #fff;
+  background-color: ${(props) => props.theme.color.backgroundSec};
   margin: 0;
   padding: ${(props) => props.theme.spacing.huge}px;
   border-radius: ${({ theme }) => theme.borderRadius.big};

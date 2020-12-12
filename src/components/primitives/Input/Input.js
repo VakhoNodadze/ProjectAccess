@@ -51,6 +51,7 @@ const Input = ({
 
   const handleFocusToggle = () => setIsFocused(!isFocused);
 
+
   return (
     <StyledContainer size={size} label={label} ref={containerRef}>
       <StyledContent
@@ -68,13 +69,6 @@ const Input = ({
             <Spinner />
           </StyledSpinner>
         )}
-        {/* {placeholder
-          && !input
-          && !isFocused && (
-          <StyledPlaceholder hasIcon={icon} attached={attached}>
-            {placeholder}
-          </StyledPlaceholder>
-        )} */}
         {icon && (
           <StyledIcon className="icon">
             <Icon color={isFocused || input.length > 0 ? 'rgba(0, 0, 0, 0.54)' : '#d9d9d9'} />
@@ -122,7 +116,7 @@ const Input = ({
               top: 0,
               right: 0,
               bottom: 0,
-              padding: '0 24px',
+              padding: '0 0 0 1rem',
               display: 'flex',
               flex: 1,
               justifyContent: 'center',
