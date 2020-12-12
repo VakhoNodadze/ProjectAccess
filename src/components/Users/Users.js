@@ -1,7 +1,7 @@
 import React from 'react';
 import User from './User';
 
-const Users = ({data, onDeleteModalOpen, setUserToDelete={setUserToDelete}}) => (
+const Users = ({ data, onDeleteModalOpen, setUserToDelete }) => (
   <>
     {
       data.map((user) => (

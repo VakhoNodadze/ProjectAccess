@@ -73,7 +73,6 @@ const AddUserModal = ({ isOpen, onClose, onUserAdd, theme }) => {
                 color="primary"
                 variant="contained"
                 type="submit"
-                // disabled={Object.keys(method.errors).length > 0}
               >
                 Send Invitation
               </Button>

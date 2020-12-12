@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Selector = styled.select`
     background-color: #fff;
-    height: 34px;
+    height: 48px;
     font-size: 13px;
     width: ${(props) => props.width};
     color: ${(props) => props.theme.color.text};
