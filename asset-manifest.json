@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/ProjectAccess/static/css/main.a3c53d3e.chunk.css",
+    "main.js": "/ProjectAccess/static/js/main.171cefa0.chunk.js",
+    "main.js.map": "/ProjectAccess/static/js/main.171cefa0.chunk.js.map",
+    "runtime-main.js": "/ProjectAccess/static/js/runtime-main.2753bcf3.js",
+    "runtime-main.js.map": "/ProjectAccess/static/js/runtime-main.2753bcf3.js.map",
+    "static/js/2.2839edb3.chunk.js": "/ProjectAccess/static/js/2.2839edb3.chunk.js",
+    "static/js/2.2839edb3.chunk.js.map": "/ProjectAccess/static/js/2.2839edb3.chunk.js.map",
+    "static/js/3.8f73ec59.chunk.js": "/ProjectAccess/static/js/3.8f73ec59.chunk.js",
+    "static/js/3.8f73ec59.chunk.js.map": "/ProjectAccess/static/js/3.8f73ec59.chunk.js.map",
+    "index.html": "/ProjectAccess/index.html",
+    "static/css/main.a3c53d3e.chunk.css.map": "/ProjectAccess/static/css/main.a3c53d3e.chunk.css.map",
+    "static/js/2.2839edb3.chunk.js.LICENSE.txt": "/ProjectAccess/static/js/2.2839edb3.chunk.js.LICENSE.txt",
+    "static/media/fonts.scss": "/ProjectAccess/static/media/segoe-semibold.ed268cb8.woff",
+    "static/media/UserProfile.9843e7f0.png": "/ProjectAccess/static/media/UserProfile.9843e7f0.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2753bcf3.js",
+    "static/js/2.2839edb3.chunk.js",
+    "static/css/main.a3c53d3e.chunk.css",
+    "static/js/main.171cefa0.chunk.js"
+  ]
+}
