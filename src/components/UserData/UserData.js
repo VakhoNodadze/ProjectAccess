@@ -130,7 +130,7 @@ const UserData = ({ theme}) => {
           register={register({ required: true })} 
           name="lastName" label="*Last Name" />
         <Select style={{marginTop: '0.75rem'}} 
-          options={ROLES} register={register({ required: true })} 
+          options={ROLES} register={register({ required: true })} isActive={isActive}
           name="role" defaultValue={role} errors={errors} width='100%' />
       </div>
       {isActive && <Button
