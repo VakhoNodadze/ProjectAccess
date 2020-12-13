@@ -153,7 +153,8 @@ const StyledLabel = styled.label`
   left: 0;
   z-index: ${(props) => (props.active ? 1 : 0)};
   font-size: 0.8rem;
-  color: ${(props) => (props.active ? props.theme.color.input : props.theme.color.placeholder)};
+  color: ${(props) => (props.disabled ? 
+    props.theme.color.placeholder : props.active ? props.theme.color.input : props.theme.color.placeholder)};
   display: flex;
   align-items: center;
   border-radius: ${(props) => props.theme.borderRadius.default};
@@ -162,13 +163,10 @@ const StyledLabel = styled.label`
   transform: translate(0, 0) scale(1);
   transform-origin: top left;
   transition: transform 150ms ease-out;
-
   height: 100%;
-
   padding: 0 ${(props) => props.theme.spacing[props.size] * 2}px;
-
   ${(props) =>
-    props.active &&
+    (props.active || props.disabled) &&
     css`
       transform: translate(4px, -${props.theme.spacing[props.size] * 2 + 2}px) scale(0.75);
     `};

@@ -20,7 +20,7 @@ import Select from '../primitives/Select';
 
 const PER_PAGE = [{ label: 5, value: 5 }, { label: 10, value: 10 }, { label: 15, value: 15 }];
 
-const Table = ({searchState, onThemeChange, isDark, theme}) => {
+const Table = ({searchState, onThemeChange, isDark, setUser, theme}) => {
   const [addToast, renderToasts] = useToasts();
 
   const [userList, setUserList] = useState(users);
@@ -59,19 +59,19 @@ const Table = ({searchState, onThemeChange, isDark, theme}) => {
 
   // user add
   const handleUserAdd = (data) => {
-    const fullName = data.first_name + data.last_name;
+    const { firstName, lastName, email, role } = data;
     const newUser = {_id: getRandomInt(1000), 
-      avatar: User, fullName, email: data.email, role: data.role, isActive: true};
+      avatar: User, firstName, lastName, email, role, isActive: true};
     setUserList((prevUsers) => 
       [newUser, ...prevUsers]);
-    addToast('success', `${fullName} has been invited!`);
+    addToast('success', `${firstName + " " + lastName} has been invited!`);
   };
 
   // user delete
   const handleUserDelete = () => {
     const newUsers = userList.filter((user) => user._id !== userToDelete._id);
     setUserList(newUsers);
-    addToast('error', `${userToDelete.fullName} has been deleted!`);
+    addToast('error', `${userToDelete.firstName + " " + userToDelete.lastName} has been deleted!`);
   };
 
   // pagination controll
@@ -169,6 +169,7 @@ const Table = ({searchState, onThemeChange, isDark, theme}) => {
         </Grid.Item>
       </Grid>
       <Users data={getPagedData()} 
+        setUser={setUser}
         onDeleteModalOpen={handleDeleteModalOpen} 
         setUserToDelete={setUserToDelete} 
       />

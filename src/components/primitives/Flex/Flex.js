@@ -19,10 +19,6 @@ const Flex = styled.div`
     && css`
       flex-wrap: ${props.wrap};
     `};
-  ${(props) => props.justify
-    && css`
-      justify-content: ${props.justify};
-    `};
   ${(props) => props.alignContent
     && css`
       align-content: ${props.alignContent};
@@ -73,6 +69,10 @@ const Flex = styled.div`
       opacity: 0;
       visibility: hidden;
     `};
+    ${(props) => props.justify
+      && css`
+        justify-content: ${props.justify};
+      `};
 `;
 
 export default Flex;

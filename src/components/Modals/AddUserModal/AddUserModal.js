@@ -16,7 +16,6 @@ const AddUserModal = ({ isOpen, onClose, onUserAdd, theme }) => {
   const { handleSubmit, register, errors } = useForm();
 
   const onSubmit = (data) => {
-    console.log('data', data);
     onUserAdd(data);
     onClose(false);
   };
@@ -36,13 +35,13 @@ const AddUserModal = ({ isOpen, onClose, onUserAdd, theme }) => {
               <Input 
                 errors={errors}
                 register={register({ required: true })} 
-                name="first_name" label="*First Name" />
+                name="firstName" label="*First Name" />
             </Grid.Item>
             <Grid.Item xs={5}>
               <Input 
                 errors={errors}
                 register={register({ required: true })} 
-                name="last_name" label="*Last Name" />
+                name="lastName" label="*Last Name" />
             </Grid.Item>
           </Grid>
           <Grid>
@@ -79,7 +78,7 @@ const AddUserModal = ({ isOpen, onClose, onUserAdd, theme }) => {
             </Grid.Item>
             <Grid.Item xs={2} />
             <Grid.Item xs={4}>
-              {(errors.first_name || errors.last_name || errors.email || errors.role )&& 
+              {(errors.firstName || errors.lastName || errors.email || errors.role )&& 
               <span style={{color: '#F89797', fontFamily: theme.fonts.light, fontStyle: 'italic'}}>
                   Fill in all the fields
               </span>}

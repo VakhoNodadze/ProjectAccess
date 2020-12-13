@@ -18,7 +18,7 @@ const StyledContainer = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   flex-grow: 1;
-  width: calc(100% + ${(props) => props.theme.spacing[props.spacing] * 2}px);
+  width: calc(100% + ${(props) => props.theme.spacing[props.spacing]}px);
   margin: 0 -${(props) => props.theme.spacing[props.spacing]}px;
 
   ${(props) =>

@@ -4,82 +4,270 @@ export const users = [
   {
     _id: 1,
     avatar: User,
-    fullName: "Samantha Standford",
+    firstName: "Samantha",
+    lastName: "Standford",
     email: "samantha.standford@testtask.com",
     role: "Admin",
-    isActive: true
+    isActive: true,
+    permissionGroupOne: true,
+    permissionGroup1: {
+      permission11: true,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: true
+    },
+    permissionGroupTwo: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: false,
+      permission14: true,
+      permission15: true
+    },
+    permissionGroupThree: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: false
+    }
   },
   {
     _id: 2,
     avatar: User,
-    fullName: "Danniel Blichman",
+    firstName: "Danniel",
+    lastName: "Blichman",
     email: "danniel.blichman@testtask.com",
     role: "Admin",
-    isActive: true
+    isActive: true,
+    permissionGroupOne: false,
+    permissionGroup1: {
+      permission11: true,
+      permission12: true,
+      permission13: true,
+      permission14: false,
+      permission15: true
+    },
+    permissionGroupTwo: true,
+    permissionGroup1: {
+      permission11: true,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: true
+    },
+    permissionGroupThree: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: false
+    }
   },
   {
     _id: 3,
     avatar: User,
-    fullName: "Margarette Jones",
+    firstName: "Margarette",
+    lastName: "Jones",
     email: "margarette.jones@testtask.com",
     role: "User",
-    isActive: true
+    isActive: true,
+    permissionGroupOne: true,
+    permissionGroup1: {
+      permission11: true,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: true
+    },
+    permissionGroupTwo: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: false,
+      permission14: true,
+      permission15: true
+    },
+    permissionGroupThree: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: false
+    }
   },
   {
     _id: 4,
     avatar: User,
-    fullName: "Bethany Doe",
+    firstName: "Bethan",
+    lastName: "Doe",
     email: "bethany.doe@testtask.com",
     role: "User",
-    isActive: true
+    isActive: true,
+    permissionGroupOne: true,
+    permissionGroup1: {
+      permission11: true,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: true
+    },
+    permissionGroupTwo: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: false,
+      permission14: true,
+      permission15: true
+    },
+    permissionGroupThree: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: false
+    }
   },
   {
     _id: 5,
     avatar: User,
-    fullName: "Samuel Jackson",
+    firstName: "Samuel",
+    lastName: "Jackson",
     email: "samuel.jackson@testtask.com",
     role: "User",
-    isActive: true
+    isActive: true,
+    permissionGroupOne: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: true,
+      permission14: false,
+      permission15: true
+    },
+    permissionGroupTwo: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: false
+    },
+    permissionGroupThree: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: false
+    }
   },
   {
     _id: 6,
     avatar: User,
-    fullName: "Persival Blinn",
+    firstName: "Persival",
+    lastName: "Blinn",
     email: "persival.blinn@testtask.com",
     role: "Admin",
-    isActive: false
+    isActive: false,
+    permissionGroupOne: true,
+    permissionGroup1: {
+      permission11: true,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: true
+    },
+    permissionGroupTwo: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: false,
+      permission13: false,
+      permission14: true,
+      permission15: true
+    },
+    permissionGroupThree: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: false
+    }
   },
   {
     _id: 7,
     avatar: User,
-    fullName: "John Smith",
+    firstName: "John",
+    lastName: "Smith",
     email: "johnsmith@testtask.com",
     role: "User",
-    isActive: true
+    isActive: true,
+    permissionGroupOne: false,
+    permissionGroup1: {
+      permission11: true,
+      permission12: true,
+      permission13: true,
+      permission14: false,
+      permission15: true
+    },
+    permissionGroupTwo: true,
+    permissionGroup1: {
+      permission11: true,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: true
+    },
+    permissionGroupThree: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: false,
+      permission13: true,
+      permission14: true,
+      permission15: false
+    }
   },
   {
     _id: 8,
     avatar: User,
-    fullName: "George Martin",
+    firstName: "George",
+    lastName: "Martin",
     email: "georgemartin@testtask.com",
     role: "User",
-    isActive: false
+    isActive: false,
+    permissionGroupOne: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: false
+    },
+    permissionGroupTwo: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: false,
+      permission14: true,
+      permission15: true
+    },
+    permissionGroupThree: false,
+    permissionGroup1: {
+      permission11: false,
+      permission12: true,
+      permission13: true,
+      permission14: true,
+      permission15: false
+    }
   }
 ];
 
   
 export const getMovie = (id) => {
   return users.find((user) => user._id === id);
-};
-  
-export const addUser = (user) => {
-  let userInDb = user.find((u) => u._id === user._id) || {};
-  userInDb.fullName = user.fullName;
-  
-  if (!userInDb._id) {
-    userInDb._id = Date.now();
-    movies.push(userInDb);
-  }
-  
-  return userInDb;
 };

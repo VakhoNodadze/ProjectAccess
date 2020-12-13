@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { withTheme } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { IconItem, Key } from '../../../Icons';
 import Grid from '../../primitives/Grid';
@@ -8,12 +9,17 @@ import Avatar from '../../primitives/Avatar';
 import Toggler from '../../primitives/ToggleSlider';
 import Divider from '../../primitives/Divider';
 
-const User = ({_id, avatar, fullName, email, role, isActive, onDeleteModalOpen, setUserToDelete, theme}) => {
+const User = ({_id, avatar, firstName, lastName, email, 
+  role, isActive, onDeleteModalOpen, setUserToDelete, setUser, user,theme}) => {
   const [ isActiveState, setIsActiveState ] = useState(isActive);
 
   const onDeleteModal = () => {
     onDeleteModalOpen();
-    setUserToDelete({_id, fullName, isActive});
+    setUserToDelete({_id, firstName,lastName, isActive});
+  };
+
+  const editUser = () => {
+    setUser(user);
   };
 
   // render key
@@ -38,7 +44,7 @@ const User = ({_id, avatar, fullName, email, role, isActive, onDeleteModalOpen, 
         <Grid.Item xs={4}>
           <Flex direction="column" align="flex-start">
             <p style={{fontSize: theme.fontSizes.h3, color: theme.color.text}}>
-              {fullName}
+              {firstName + " " + lastName}
             </p>
             <span style={{fontFamily: theme.fonts.light, fontSize: theme.fontSizes.h3, 
               color: theme.color.text}}>{email}</span>
@@ -59,7 +65,11 @@ const User = ({_id, avatar, fullName, email, role, isActive, onDeleteModalOpen, 
         </Grid.Item>
         <Grid.Item xs={2} style={{alignItems: 'flex-end'}}>
           <div style={{display: 'flex'}}>
-            {isActiveState && <IconItem name="Settings" style={{marginRight: '1.5rem'}} />}
+            {isActiveState && 
+            <Link to="/edit">
+              <IconItem name="Settings" onClick={() => editUser()} style={{marginRight: '1.5rem'}} />
+            </Link>
+            }
             <IconItem name="Garbage" onClick={() => onDeleteModal()} />
           </div>
         </Grid.Item>

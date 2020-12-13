@@ -79,6 +79,7 @@ const Input = ({
             <StyledLabel
               className="label"
               size={size}
+              disabled={disabled}
               active={isFocused || input.length > 0 || defaultValue.length > 0}
               htmlFor={id || name}
               input-type={type}

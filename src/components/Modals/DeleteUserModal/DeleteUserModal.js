@@ -7,7 +7,7 @@ import Text from '../../primitives/Text';
 import Button from '../../primitives/Button';
 import { Face } from '../../../Icons';
 
-const DeleteUserModal = ({ isOpen, onClose, onUserDelete, userToDelete: { fullName, isActive }, theme }) => {
+const DeleteUserModal = ({ isOpen, onClose, onUserDelete, userToDelete: { firstName, lastName, isActive }, theme }) => {
   
   const onDelete = () => {
     onUserDelete();
@@ -25,7 +25,7 @@ const DeleteUserModal = ({ isOpen, onClose, onUserDelete, userToDelete: { fullNa
             <Face />
           </Grid.Item>
           <Grid.Item xs={5}>
-            <Text>{fullName}</Text>
+            <Text>{firstName + " " + lastName}</Text>
           </Grid.Item>
           <Grid.Item xs={5}>
             {isActive && <span style={{color: theme.color.textBlue}}>Active User</span> }

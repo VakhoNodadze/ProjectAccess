@@ -14,6 +14,8 @@ const App = () => {
   const [theme, setTheme] = useState(light);
   const [background, setBackground] = useState(light.color.backgroundPr);
 
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
     setBackground(theme.color.backgroundPr);
   }, [theme]);
@@ -29,8 +31,10 @@ const App = () => {
         <GlobalStyle />
         <BrowserRouter>
           <Switch>
-            <Route path="/" component={() => <Main onThemeChange={handleThemeChange} isDark={theme.type}/>} exact />
-            <Route path="/edit" component={() => <EditUser onThemeChange={handleThemeChange} isDark={theme.type}/>} exact />
+            <Route path="/" component={() => <Main onThemeChange={handleThemeChange} 
+              setUser={setUser} isDark={theme.type}/>} exact />
+            <Route path="/edit" component={() => <EditUser 
+              userObj={user} setUser={setUser} onThemeChange={handleThemeChange} isDark={theme.type}/>} exact />
           </Switch>
         </BrowserRouter>
       </Flex>
