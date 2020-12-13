@@ -7,7 +7,7 @@ const PrevNext = styled.span `
     margin: 0 0.3rem;
     padding: 0 0.3rem;
     cursor: pointer;
-    color: ${props => props.theme.color.text};
+    color: ${(props) => props.theme.color.text};
     &:hover{
         background-color: ${(props) => props.theme.color.gray000};
     }
@@ -20,7 +20,7 @@ const Page = styled.li `
     text-align: center;
     border-radius: 2px;
     cursor: pointer;
-    color: ${props => props.theme.color.text};
+    color: ${(props) => (props.active ? props.theme.color.reverseText : props.theme.color.gray200)};
     background-color: ${(props) => (props.active ? props.theme.color.gray200 : 'transparent')};
     margin: 0 0.2rem;
     &:hover{

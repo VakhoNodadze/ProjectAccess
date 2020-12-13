@@ -13,12 +13,11 @@ const App = () => {
 
   useEffect(() => {
     setBackground(theme.color.backgroundPr);
-    console.log('THEME', theme.type);
   }, [theme]);
 
   const handleThemeChange = () => {
-    if(theme === light) {setTheme(dark);}
-    if(theme === dark) {setTheme(light);}
+    if(theme.type === light.type) {setTheme(dark);}
+    if(theme.type === dark.type) {setTheme(light);}
   };
 
   return (
