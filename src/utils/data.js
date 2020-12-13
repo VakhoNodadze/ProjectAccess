@@ -10,29 +10,29 @@ export const users = [
     role: "Admin",
     isActive: true,
     permissionGroupOne: true,
-    permissionGroup1: {
-      permission11: true,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: true
-    },
+    permissionGroupArray1: [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
     permissionGroupTwo: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: false,
-      permission14: true,
-      permission15: true
-    },
+    permissionGroupArray2: [
+      false,
+      true,
+      false,
+      true,
+      true
+    ],
     permissionGroupThree: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: false
-    }
+    permissionGroupArray3: [
+      false,
+      true,
+      true,
+      true,
+      false
+    ]
   },
   {
     _id: 2,
@@ -43,29 +43,29 @@ export const users = [
     role: "Admin",
     isActive: true,
     permissionGroupOne: false,
-    permissionGroup1: {
-      permission11: true,
-      permission12: true,
-      permission13: true,
-      permission14: false,
-      permission15: true
-    },
+    permissionGroupArray1: [
+      true,
+      true,
+      true,
+      false,
+      true
+    ],
     permissionGroupTwo: true,
-    permissionGroup1: {
-      permission11: true,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: true
-    },
+    permissionGroupArray2: [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
     permissionGroupThree: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: false
-    }
+    permissionGroupArray3: [
+      false,
+      true,
+      true,
+      true,
+      false
+    ]
   },
   {
     _id: 3,
@@ -76,29 +76,29 @@ export const users = [
     role: "User",
     isActive: true,
     permissionGroupOne: true,
-    permissionGroup1: {
-      permission11: true,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: true
-    },
+    permissionGroupArray1: [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
     permissionGroupTwo: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: false,
-      permission14: true,
-      permission15: true
-    },
+    permissionGroupArray2: [
+      false,
+      true,
+      false,
+      true,
+      true
+    ],
     permissionGroupThree: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: false
-    }
+    permissionGroupArray3: [
+      false,
+      true,
+      true,
+      true,
+      false
+    ]
   },
   {
     _id: 4,
@@ -109,29 +109,29 @@ export const users = [
     role: "User",
     isActive: true,
     permissionGroupOne: true,
-    permissionGroup1: {
-      permission11: true,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: true
-    },
+    permissionGroupArray1: [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
     permissionGroupTwo: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: false,
-      permission14: true,
-      permission15: true
-    },
+    permissionGroupArray2: [
+      false,
+      true,
+      false,
+      true,
+      true
+    ],
     permissionGroupThree: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: false
-    }
+    permissionGroupArray3: [
+      false,
+      true,
+      true,
+      true,
+      false
+    ]
   },
   {
     _id: 5,
@@ -142,29 +142,29 @@ export const users = [
     role: "User",
     isActive: true,
     permissionGroupOne: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: true,
-      permission14: false,
-      permission15: true
-    },
+    permissionGroupArray1: [
+      false,
+      true,
+      true,
+      false,
+      true
+    ],
     permissionGroupTwo: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: false
-    },
+    permissionGroupArray2: [
+      false,
+      true,
+      true,
+      true,
+      false
+    ],
     permissionGroupThree: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: false
-    }
+    permissionGroupArray3: [
+      false,
+      true,
+      true,
+      true,
+      false
+    ]
   },
   {
     _id: 6,
@@ -175,29 +175,29 @@ export const users = [
     role: "Admin",
     isActive: false,
     permissionGroupOne: true,
-    permissionGroup1: {
-      permission11: true,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: true
-    },
+    permissionGroupArray1: [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
     permissionGroupTwo: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: false,
-      permission13: false,
-      permission14: true,
-      permission15: true
-    },
+    permissionGroupArray2: [
+      false,
+      false,
+      false,
+      true,
+      true
+    ],
     permissionGroupThree: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: false
-    }
+    permissionGroupArray3: [
+      false,
+      true,
+      true,
+      true,
+      false
+    ]
   },
   {
     _id: 7,
@@ -208,29 +208,29 @@ export const users = [
     role: "User",
     isActive: true,
     permissionGroupOne: false,
-    permissionGroup1: {
-      permission11: true,
-      permission12: true,
-      permission13: true,
-      permission14: false,
-      permission15: true
-    },
+    permissionGroupArray1: [
+      true,
+      true,
+      true,
+      false,
+      true
+    ],
     permissionGroupTwo: true,
-    permissionGroup1: {
-      permission11: true,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: true
-    },
+    permissionGroupArray2: [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
     permissionGroupThree: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: false,
-      permission13: true,
-      permission14: true,
-      permission15: false
-    }
+    permissionGroupArray3: [
+      false,
+      false,
+      true,
+      true,
+      false
+    ]
   },
   {
     _id: 8,
@@ -241,29 +241,29 @@ export const users = [
     role: "User",
     isActive: false,
     permissionGroupOne: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: false
-    },
+    permissionGroupArray1: [
+      false,
+      true,
+      true,
+      true,
+      false
+    ],
     permissionGroupTwo: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: false,
-      permission14: true,
-      permission15: true
-    },
+    permissionGroupArray2: [
+      false,
+      true,
+      false,
+      true,
+      true
+    ],
     permissionGroupThree: false,
-    permissionGroup1: {
-      permission11: false,
-      permission12: true,
-      permission13: true,
-      permission14: true,
-      permission15: false
-    }
+    permissionGroupArray3: [
+      false,
+      true,
+      true,
+      true,
+      false
+    ]
   }
 ];
 

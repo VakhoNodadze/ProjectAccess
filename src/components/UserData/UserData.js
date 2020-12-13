@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withTheme } from 'styled-components';
 
 import User from '../../resources/images/UserProfile.png';
@@ -24,33 +24,39 @@ import useDropdown from '../../hooks/useDropdown';
 const ROLES = [{ label: 'Role', value: '' }, { label: 'Admin', value: 'Admin' }, { label: 'User', value: 'User' }];
 
 const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
-  const { handleSubmit, register, errors } = useForm({
-    defaultValues: {}
-  });
+
+
   const [addToast, renderToasts] = useToasts();
   const [ref, isOpen, open, close] = useDropdown();
 
-  const [user, setUser] = useState({
-    _id: 1,
-    avatar: User,
-    fullName: "Samantha Standford",
-    email: "samantha.standford@testtask.com",
-    role: "Admin",
-    isActive: true
-  },);
+  const [user, setUser] = useState({});
   const [showPermissionGroup1, setShowPermissionGroup1] = useState(false);
 
-
+  useEffect(() => {
+    setUser(userObj);
+  }, [userObj]);
   // user add
-  const handleUserAdd = (data) => {
-    const fullName = data.first_name + data.last_name;
-    const newUser = {_id: getRandomInt(1000), 
-      avatar: User, fullName, email: data.email, role: data.role, isActive: true};
-    setUser((prevUsers) => 
-      [newUser, ...prevUsers]);
-    addToast('success', `${fullName} has been added!`);
-  };
+  // const handleUserAdd = (data) => {
+  //   const fullName = data.first_name + data.last_name;
+  //   const newUser = {_id: getRandomInt(1000), 
+  //     avatar: User, fullName, email: data.email, role: data.role, isActive: true};
+  //   setUser((prevUsers) => 
+  //     [newUser, ...prevUsers]);
+  //   addToast('success', `${fullName} has been added!`);
+  // };
+  const { firstName, lastName, isActive, role, email,
+    permissionGroupOne, permissionGroupTwo, permissionGroupThree, permissionGroupArray1, 
+    permissionGroupArray2, permissionGroupArray3} = user;
 
+
+  const { handleSubmit, register, errors } = useForm({
+    defaultValues: {
+      firstName,
+      lastName,
+      role
+    }
+  });
+    
   // renders
   const renderUserMainInfo = () => (
     <>
@@ -67,8 +73,8 @@ const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
         </div>
         <span style={{color: theme.color.inActiveText, margin: theme.color.text,
           fontFamily: theme.fonts.light, cursor: 'pointer'}}>Upload a Photo</span>
-        <h1 style={{color: theme.color.huge, textAlign: 'center', lineHeight: '2rem '}}>Danniel Blichman</h1>
-        <p style={{color: theme.color.text, fontFamily: theme.fonts.light}}>danniel.blichman@testtask.com</p>
+        <h1 style={{color: theme.color.huge, textAlign: 'center', lineHeight: '2rem '}}>{firstName + " " + lastName}</h1>
+        <p style={{color: theme.color.text, fontFamily: theme.fonts.light}}>{email}</p>
       </Flex>
       <Button 
         style={{marginTop: '2rem', lineHeight: '14px'}}
@@ -124,50 +130,49 @@ const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
     <>
       <Flex justify="space-between" align="flex-end" width="100%">
         <h3 
-          onClick={() => handleOrderChange('fullName')}
           style={{
             color: theme.color.text, fontSize: theme.fontSizes.h1, marginLeft: '1rem',
             fontFamily: theme.fonts.semibold, cursor: 'pointer'
           }}>Permissions</h3>
-        <span style={{color:theme.color.text, fontFamily: theme.fonts.light}}>Admin</span>
+        <span style={{color:theme.color.text, fontFamily: theme.fonts.light}}>{role}</span>
       </Flex>
       <Flex justify="space-between" width="100%" align="flex-end" margin="2rem 0 1rem 0">
         <span>Super Admin</span>
-        <ToggleSlider isChecked={user.isActive} onChange={() => setIsActive((prevState) => !prevState)} />
+        <ToggleSlider isChecked={isActive} onChange={() => setIsActive((prevState) => !prevState)} />
       </Flex>
       <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '2rem 0'}} />
       <Dropdown 
         style={{width: '100%'}}
-        isOpen={isOpen}
+        // isOpen={isOpen}
         onClick={open}
         header={
           <Flex justify="space-between" width="100%" align="flex-end" >
             <span>Permission Group 1</span>
-            <ToggleSlider isChecked={user.isActive} onChange={() => setIsActive((prevState) => !prevState)} />
+            <ToggleSlider isChecked={permissionGroupOne} onChange={() => setIsActive((prevState) => !prevState)} />
           </Flex>
         } 
         content={<h1>Testing here</h1>}/>
       <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '2rem 0'}} />
       <Dropdown 
         style={{width: '100%'}}
-        isOpen={isOpen}
+        // isOpen={isOpen}
         onClick={open}
         header={
           <Flex justify="space-between" width="100%" align="flex-end" >
             <span>Permission Group 2</span>
-            <ToggleSlider isChecked={user.isActive} onChange={() => setIsActive((prevState) => !prevState)} />
+            <ToggleSlider isChecked={permissionGroupTwo} onChange={() => setIsActive((prevState) => !prevState)} />
           </Flex>
         } 
         content={<><h1>Testing here</h1><h1>Testing here</h1><h1>Testing here</h1><h1>Testing here</h1> </>}/>
       <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '2rem 0'}} />  
       <Dropdown 
         style={{width: '100%'}}
-        isOpen={isOpen}
+        // isOpen={isOpen}
         onClick={open}
         header={
           <Flex justify="space-between" width="100%" align="flex-end" >
             <span>Permission Group 3</span>
-            <ToggleSlider isChecked={user.isActive} onChange={() => setIsActive((prevState) => !prevState)} />
+            <ToggleSlider isChecked={permissionGroupThree} onChange={() => setIsActive((prevState) => !prevState)} />
           </Flex>
         } 
         content={<h1>Testing here</h1>}/>

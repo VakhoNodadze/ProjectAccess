@@ -5,7 +5,7 @@ import { withTheme } from 'styled-components';
 import Grid from '../components/primitives/Grid';
 import UserData from '../components/UserData';
 
-const EditUser = ({onThemeChange, isDark, theme}) => {
+const EditUser = ({onThemeChange, userObj, isDark, theme}) => {
 
   return (
     <Flex direction="column" full>
@@ -15,7 +15,7 @@ const EditUser = ({onThemeChange, isDark, theme}) => {
           <h1 style={{color: theme.color.text, fontSize: theme.fontSizes.h1}}>User Setup</h1>
         </Grid.Item>
       </Grid>
-      <UserData onThemeChange={onThemeChange} isDark={isDark} />
+      <UserData userObj={userObj} onThemeChange={onThemeChange} isDark={isDark} />
     </Flex>
   );
 };
