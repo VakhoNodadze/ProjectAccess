@@ -1,14 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { withTheme } from 'styled-components';
 
 import User from '../../resources/images/UserProfile.png';
-import { users } from '../../utils/data';
 import { generateId } from '../../utils/helpers';
 import { paginate } from '../../utils/paginate';
-import useToasts from "../../hooks/useToasts";
 import { Plus, DownArrow, UpArrow } from '../../Icons';
 import { StateContext } from '../../App';
+import useToasts from "../../hooks/useToasts";
 
 import AddEditButton from '../primitives/AddEditButton';
 import Button from '../primitives/Button';
@@ -24,12 +23,11 @@ import Select from '../primitives/Select';
 const PER_PAGE = [{ label: 5, value: 5 }, { label: 10, value: 10 }, { label: 15, value: 15 }];
 
 const Table = ({searchState, theme}) => {
+  const { setUser, onThemeChange, isDark, userList, setUserList, addToast } = useContext(StateContext);
 
-  const { setUser, onThemeChange, isDark } = useContext(StateContext);
 
-  const [addToast, renderToasts] = useToasts();
+  // const [addToast, renderToasts] = useToasts();
 
-  const [userList, setUserList] = useState(users);
   const [userToDelete, setUserToDelete] = useState(null);
   const [curPage, setCurPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
@@ -51,9 +49,10 @@ const Table = ({searchState, theme}) => {
     return users;
   };
 
-  const getRandomInt = (max) => {
-    return Math.floor(Math.random() * Math.floor(max)) + 1;
-  };
+  useEffect(() => {
+    return () => {
+    };
+  }, []);
 
   // order change
   const handleOrderChange = (path) => {
@@ -67,7 +66,8 @@ const Table = ({searchState, theme}) => {
   // user add
   const handleUserAdd = (data) => {
     const { firstName, lastName, email, role } = data;
-    const newUser = {_id: generateId(), 
+    const newUser = {
+      _id: generateId(), 
       avatar: User, firstName, lastName, email, role, isActive: true, isSuper: false,
       permissionGroupOne: false,
       permissionGroupArray1: [
@@ -95,7 +95,6 @@ const Table = ({searchState, theme}) => {
       ]};
     setUserList((prevUsers) => 
       [newUser, ...prevUsers]);
-    addToast('success', `${firstName + " " + lastName} has been invited!`);
   };
 
   // user delete
@@ -220,7 +219,7 @@ const Table = ({searchState, theme}) => {
       </div>
       {addModalOpen && renderAddUserModal()}
       {deleteModalOpen && renderDeleteUserModal()}
-      {renderToasts()}
+      {/* {renderToasts()} */}
     </div>
   );
 };

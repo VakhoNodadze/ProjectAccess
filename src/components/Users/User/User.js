@@ -67,8 +67,8 @@ const User = ({_id, avatar, firstName, setUser, lastName, email,
         <Grid.Item xs={2} style={{alignItems: 'flex-end'}}>
           <div style={{display: 'flex', alignItems: 'center'}}>
             {isActiveState && 
-            <Link to="/edit">
-              <IconItem name="Settings" onClick={() => editUser()} style={{marginRight: '1.5rem'}} />
+            <Link to="/edit" onClick={() => editUser()}>
+              <IconItem name="Settings" style={{marginRight: '1.5rem'}} />
             </Link>
             }
             <IconItem name="Garbage" onClick={() => onDeleteModal()} />

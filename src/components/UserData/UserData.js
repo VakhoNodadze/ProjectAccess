@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { withTheme } from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 import { StateContext } from '../../App';
-import useToasts from "../../hooks/useToasts";
 import { Settings, Key } from '../../Icons';
 import UserIcon from '../../resources/images/UserProfile.png';
 import { useForm } from "react-hook-form";
@@ -25,11 +25,8 @@ const ROLES = [{ label: 'Role', value: '' }, { label: 'Admin', value: 'Admin' },
 const UserData = ({ theme}) => {
 
   const { handleSubmit, register, errors } = useForm();
-
-
-  const { user: userObj, onThemeChange, isDark } = useContext(StateContext);
-
-  const [addToast, renderToasts] = useToasts();
+  const history = useHistory();
+  const { user: userObj, onThemeChange, isDark, addToast } = useContext(StateContext);
   const [ref, isOpen, open, close] = useDropdown();
 
   const [user, setUser] = useState({});
@@ -56,11 +53,13 @@ const UserData = ({ theme}) => {
 
   const handleInvitation = () => {
     addToast('success', `${firstName} ${lastName} has been invited again!`);
+    history.push('/');
   };
 
   const onSubmit = (data) => {
     const { firstName, lastName} = data;
     addToast('success', `${firstName} ${lastName} has been saved!`);
+    history.push('/');
   };
 
     
@@ -214,7 +213,6 @@ const UserData = ({ theme}) => {
           </form>
         </Grid.Item>
       </Grid>
-      {renderToasts()}
     </div>
   );
 };

@@ -4,7 +4,9 @@ import GlobalStyle from './styled/global';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from 'styled-components';
 
+import { users } from './utils/data';
 import { themes, light, dark } from './styled/themes';
+import useToasts from "./hooks/useToasts";
 import Flex from './components/primitives/Flex';
 import Main from './pages/Main';
 import EditUser from './pages/EditUser';
@@ -17,6 +19,8 @@ const App = () => {
   const [background, setBackground] = useState(light.color.backgroundPr);
 
   const [user, setUser] = useState(null);
+  const [userList, setUserList] = useState(users);
+  const [addToast, renderToasts] = useToasts();
 
   useEffect(() => {
     setBackground(theme.color.backgroundPr);
@@ -29,7 +33,8 @@ const App = () => {
 
   return (
     <ThemeProvider theme={themes[theme.type]}>
-      <StateContext.Provider value={{user, setUser, onThemeChange: handleThemeChange, isDark: theme.type}}>
+      <StateContext.Provider 
+        value={{user, setUser, onThemeChange: handleThemeChange, isDark: theme.type, addToast, userList, setUserList}}>
         <Flex direction="column" full height="100vh" style={{backgroundColor: background}}>
           <GlobalStyle />
           <BrowserRouter>
@@ -39,6 +44,7 @@ const App = () => {
             </Switch>
           </BrowserRouter>
         </Flex>
+        {renderToasts()}
       </StateContext.Provider>
     </ThemeProvider>
   );
