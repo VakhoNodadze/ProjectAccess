@@ -200,7 +200,7 @@ export const themes = {
       large: 24,
       extraLarge: 32,
       huge: 38,
-      extraHuge: 44
+      extraHuge: 72
     },
     animation: {
       easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
@@ -410,7 +410,7 @@ export const themes = {
       large: 24,
       extraLarge: 32,
       huge: 38,
-      extraHuge: 44
+      extraHuge: 72
     },
     animation: {
       easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',

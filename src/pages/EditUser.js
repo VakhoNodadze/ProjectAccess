@@ -12,7 +12,7 @@ const EditUser = ({onThemeChange, isDark, theme}) => {
       <Grid style={{padding: "4rem 4rem 0 4rem", maxWidth: '100%'}}>
         <Grid.Item xs={1} />
         <Grid.Item xs={6}>
-          <h1 style={{color: theme.color.text, fontSize: theme.fontSize.h1}}>User Setup</h1>
+          <h1 style={{color: theme.color.text, fontSize: theme.fontSizes.h1}}>User Setup</h1>
         </Grid.Item>
       </Grid>
       <UserData onThemeChange={onThemeChange} isDark={isDark} />

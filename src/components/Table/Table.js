@@ -61,7 +61,7 @@ const Table = ({searchState, onThemeChange, isDark, theme}) => {
   const handleUserAdd = (data) => {
     const fullName = data.first_name + data.last_name;
     const newUser = {_id: getRandomInt(1000), 
-      avatar: User, fullName, email: data.email, role: data.role, status: true};
+      avatar: User, fullName, email: data.email, role: data.role, isActive: true};
     setUserList((prevUsers) => 
       [newUser, ...prevUsers]);
     addToast('success', `${fullName} has been invited!`);
@@ -132,7 +132,7 @@ const Table = ({searchState, onThemeChange, isDark, theme}) => {
           <h3 
             onClick={() => handleOrderChange('fullName')}
             style={{
-              color: theme.color.text, fontSize: theme.fontSize.h3, fontFamily: theme.fonts.semibold, cursor: 'pointer'
+              color: theme.color.text, fontSize: theme.fontSizes.h3, fontFamily: theme.fonts.semibold, cursor: 'pointer'
             }}>User {(sortList.path === 'fullName' && sortList.order === 'asc') ? 
               <DownArrow color={theme.color.text} /> : <UpArrow color={theme.color.text} />}</h3>
         </Grid.Item>
@@ -140,24 +140,24 @@ const Table = ({searchState, onThemeChange, isDark, theme}) => {
           <h3 
             onClick={() => handleOrderChange('role')}
             style={{
-              color: theme.color.textSecondary, fontSize: theme.fontSize.h3, fontFamily: theme.fonts.semibold, 
+              color: theme.color.textSecondary, fontSize: theme.fontSizes.h3, fontFamily: theme.fonts.semibold, 
               cursor: 'pointer' 
             }}>Role {(sortList.path === 'role' && sortList.order === 'asc') ? 
               <DownArrow color={theme.color.textSecondary} /> : <UpArrow color={theme.color.textSecondary} />}</h3>
         </Grid.Item>
         <Grid.Item xs={2} style={{alignItems: 'center'}}>
           <h3 
-            onClick={() => handleOrderChange('status')}
+            onClick={() => handleOrderChange('isActive')}
             style={{
-              color: theme.color.textSecondary, fontSize: theme.fontSize.h3, fontFamily: theme.fonts.semibold, 
+              color: theme.color.textSecondary, fontSize: theme.fontSizes.h3, fontFamily: theme.fonts.semibold, 
               cursor: 'pointer'
-            }}>Status {(sortList.path === 'status' && sortList.order === 'asc') ? 
+            }}>Status {(sortList.path === 'isActive' && sortList.order === 'asc') ? 
               <UpArrow color={theme.color.textSecondary} /> : <DownArrow color={theme.color.textSecondary} />}</h3>
         </Grid.Item>
         <Grid.Item xs={2} style={{alignItems: 'flex-end'}}>
           <h3 
             style={{
-              color: theme.color.textSecondary, fontSize: theme.fontSize.h3, fontFamily: theme.fonts.semibold, 
+              color: theme.color.textSecondary, fontSize: theme.fontSizes.h3, fontFamily: theme.fonts.semibold, 
               cursor: 'pointer'
             }}>Actions</h3>
         </Grid.Item>

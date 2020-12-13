@@ -26,7 +26,7 @@ const AddUserModal = ({ isOpen, onClose, onUserAdd, theme }) => {
       isOpen={isOpen}
       onClose={() => onClose(false)}>
       <Modal.Content>
-        <h1 style={{color: theme.color.text, fontSize: theme.fontSize.h1, textAlign: 'center'}}>Invite New Users</h1>
+        <h1 style={{color: theme.color.text, fontSize: theme.fontSizes.h1, textAlign: 'center'}}>Invite New Users</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid>
             <Grid.Item xs={2} style={{alignItems: 'flex-end', justifyContent: 'flex-end', marginBottom: '0.75rem'}}>

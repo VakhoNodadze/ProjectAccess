@@ -11,7 +11,7 @@ const Users = ({ data, onDeleteModalOpen, setUserToDelete }) => (
           fullName={user.fullName} 
           email={user.email} 
           role={user.role} 
-          status={user.status} 
+          isActive={user.isActive} 
           onDeleteModalOpen={onDeleteModalOpen} 
           setUserToDelete={setUserToDelete} 
         />

@@ -7,7 +7,7 @@ import Text from '../../primitives/Text';
 import Button from '../../primitives/Button';
 import { Face } from '../../../Icons';
 
-const DeleteUserModal = ({ isOpen, onClose, onUserDelete, userToDelete: { fullName, status }, theme }) => {
+const DeleteUserModal = ({ isOpen, onClose, onUserDelete, userToDelete: { fullName, isActive }, theme }) => {
   
   const onDelete = () => {
     onUserDelete();
@@ -19,7 +19,7 @@ const DeleteUserModal = ({ isOpen, onClose, onUserDelete, userToDelete: { fullNa
       isOpen={isOpen}
       onClose={() => onClose(false)}>
       <Modal.Content>
-        <h1 style={{color: theme.color.text, fontSize: theme.fontSize.h1, textAlign: 'center'}}>Delete User</h1>
+        <h1 style={{color: theme.color.text, fontSize: theme.fontSizes.h1, textAlign: 'center'}}>Delete User</h1>
         <Grid>
           <Grid.Item xs={2} style={{alignItems: 'flex-end', justifyContent: 'flex-end'}}>
             <Face />
@@ -28,8 +28,8 @@ const DeleteUserModal = ({ isOpen, onClose, onUserDelete, userToDelete: { fullNa
             <Text>{fullName}</Text>
           </Grid.Item>
           <Grid.Item xs={5}>
-            {status && <span style={{color: theme.color.textBlue}}>Active User</span> }
-            {!status && <span style={{color: '#ff6666'}}>Inactive User</span>}
+            {isActive && <span style={{color: theme.color.textBlue}}>Active User</span> }
+            {!isActive && <span style={{color: '#ff6666'}}>Inactive User</span>}
           </Grid.Item>
         </Grid>
         <Grid>

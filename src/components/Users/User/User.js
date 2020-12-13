@@ -8,21 +8,21 @@ import Avatar from '../../primitives/Avatar';
 import Toggler from '../../primitives/ToggleSlider';
 import Divider from '../../primitives/Divider';
 
-const User = ({_id, avatar, fullName, email, role, status, onDeleteModalOpen, setUserToDelete, theme}) => {
-  const [ isActive, setIsActive ] = useState(status);
+const User = ({_id, avatar, fullName, email, role, isActive, onDeleteModalOpen, setUserToDelete, theme}) => {
+  const [ isActiveState, setIsActiveState ] = useState(isActive);
 
   const onDeleteModal = () => {
     onDeleteModalOpen();
-    setUserToDelete({_id, fullName, status});
+    setUserToDelete({_id, fullName, isActive});
   };
 
   // render key
   const renderKey = () => {
-    if(isActive) {
+    if(isActiveState) {
       return <div 
         style={{backgroundColor: theme.color.purple, 
           padding: '0 6px', borderRadius: '0.9rem', cursor: 'pointer',
-          display: isActive ? 'flex' : 'none', alignItems: 'center', marginRight: '0.8rem'}}>
+          display: isActiveState ? 'flex' : 'none', alignItems: 'center', marginRight: '0.8rem'}}>
         <Key color='#fff' />
       </div>;
     } 
@@ -30,17 +30,17 @@ const User = ({_id, avatar, fullName, email, role, status, onDeleteModalOpen, se
   };
 
   return (
-    <div style={{opacity: isActive ? '1' : '0.3'}}>
+    <div style={{opacity: isActiveState ? '1' : '0.3'}}>
       <Grid>
         <Grid.Item xs={1} style={{alignItems: 'center'}}>
           <Avatar avatar={avatar} />
         </Grid.Item>
         <Grid.Item xs={4}>
           <Flex direction="column" align="flex-start">
-            <p style={{fontSize: theme.fontSize.h3, color: theme.color.text}}>
+            <p style={{fontSize: theme.fontSizes.h3, color: theme.color.text}}>
               {fullName}
             </p>
-            <span style={{fontFamily: theme.fonts.light, fontSize: theme.fontSize.h3, 
+            <span style={{fontFamily: theme.fonts.light, fontSize: theme.fontSizes.h3, 
               color: theme.color.text}}>{email}</span>
           </Flex>
         </Grid.Item>
@@ -55,11 +55,11 @@ const User = ({_id, avatar, fullName, email, role, status, onDeleteModalOpen, se
           </Grid>
         </Grid.Item>
         <Grid.Item xs={2} style={{alignItems: 'center'}}>
-          <Toggler isChecked={isActive} onChange={() => setIsActive((prevState) => !prevState)} />
+          <Toggler isChecked={isActiveState} onChange={() => setIsActiveState((prevState) => !prevState)} />
         </Grid.Item>
         <Grid.Item xs={2} style={{alignItems: 'flex-end'}}>
           <div style={{display: 'flex'}}>
-            {isActive && <IconItem name="Settings" style={{marginRight: '1.5rem'}} />}
+            {isActiveState && <IconItem name="Settings" style={{marginRight: '1.5rem'}} />}
             <IconItem name="Garbage" onClick={() => onDeleteModal()} />
           </div>
         </Grid.Item>

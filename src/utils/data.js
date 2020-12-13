@@ -7,7 +7,7 @@ export const users = [
     fullName: "Samantha Standford",
     email: "samantha.standford@testtask.com",
     role: "Admin",
-    status: true
+    isActive: true
   },
   {
     _id: 2,
@@ -15,7 +15,7 @@ export const users = [
     fullName: "Danniel Blichman",
     email: "danniel.blichman@testtask.com",
     role: "Admin",
-    status: true
+    isActive: true
   },
   {
     _id: 3,
@@ -23,7 +23,7 @@ export const users = [
     fullName: "Margarette Jones",
     email: "margarette.jones@testtask.com",
     role: "User",
-    status: true
+    isActive: true
   },
   {
     _id: 4,
@@ -31,7 +31,7 @@ export const users = [
     fullName: "Bethany Doe",
     email: "bethany.doe@testtask.com",
     role: "User",
-    status: true
+    isActive: true
   },
   {
     _id: 5,
@@ -39,7 +39,7 @@ export const users = [
     fullName: "Samuel Jackson",
     email: "samuel.jackson@testtask.com",
     role: "User",
-    status: true
+    isActive: true
   },
   {
     _id: 6,
@@ -47,7 +47,7 @@ export const users = [
     fullName: "Persival Blinn",
     email: "persival.blinn@testtask.com",
     role: "Admin",
-    status: false
+    isActive: false
   },
   {
     _id: 7,
@@ -55,7 +55,7 @@ export const users = [
     fullName: "John Smith",
     email: "johnsmith@testtask.com",
     role: "User",
-    status: true
+    isActive: true
   },
   {
     _id: 8,
@@ -63,7 +63,7 @@ export const users = [
     fullName: "George Martin",
     email: "georgemartin@testtask.com",
     role: "User",
-    status: false
+    isActive: false
   }
 ];
 

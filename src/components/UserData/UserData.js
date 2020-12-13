@@ -9,23 +9,32 @@ import UserIcon from '../../resources/images/UserProfile.png';
 import AddEditButton from '../primitives/AddEditButton';
 import Button from '../primitives/Button';
 import Grid from '../primitives/Grid';
+import ToggleSlider from '../primitives/ToggleSlider';
 
 const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
   const [addToast, renderToasts] = useToasts();
 
-  const [user, setUser] = useState(userObj);
+  const [user, setUser] = useState({
+    _id: 1,
+    avatar: User,
+    fullName: "Samantha Standford",
+    email: "samantha.standford@testtask.com",
+    role: "Admin",
+    isActive: true
+  },);
 
 
   // user add
   const handleUserAdd = (data) => {
     const fullName = data.first_name + data.last_name;
     const newUser = {_id: getRandomInt(1000), 
-      avatar: User, fullName, email: data.email, role: data.role, status: true};
+      avatar: User, fullName, email: data.email, role: data.role, isActive: true};
     setUser((prevUsers) => 
       [newUser, ...prevUsers]);
     addToast('success', `${fullName} has been added!`);
   };
 
+  // renders
   const renderUserMainInfo = () => (
     <>
       <div style={{backgroundImage: `url(${UserIcon})`, 
@@ -40,7 +49,7 @@ const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
       </div>
       <span style={{color: theme.color.inActiveText, margin: theme.color.text,
         fontFamily: theme.fonts.light, cursor: 'pointer'}}>Upload a Photo</span>
-      <h1 style={{color: theme.color.huge}}>Danniel Blichman</h1>
+      <h1 style={{color: theme.color.huge, textAlign: 'center', lineHeight: '2rem '}}>Danniel Blichman</h1>
       <p style={{color: theme.color.text, fontFamily: theme.fonts.light}}>danniel.blichman@testtask.com</p>
       <Button 
         style={{marginTop: '2rem'}}
@@ -52,6 +61,22 @@ const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
     </>
   );
 
+  const renderUserDetails = () => (
+    <>
+      <h3 
+        onClick={() => handleOrderChange('fullName')}
+        style={{
+          color: theme.color.text, fontSize: theme.fontSizes.h1, marginLeft: '1rem',
+          fontFamily: theme.fonts.semibold, cursor: 'pointer'
+        }}>Details</h3>
+      <div style={{display: 'flex', alignItems: 'center', marginTop: '0.5rem'}}>
+        <ToggleSlider isChecked={user.isActive} onChange={() => setIsActive((prevState) => !prevState)} />
+        <span style={{marginLeft: '0.8rem', fontFamily: theme.fonts.light}}>The user is {user.isActive ? <span 
+          style={{fontFamily: theme.fonts.bold}}>Active</span> : 
+          <span style={{fontFamily: theme.fonts.bold}}>Inactive</span>}</span>
+      </div>
+    </>
+  );
   
   return (
     <div style={{backgroundColor: theme.color.backgroundSec, height: '85%', padding: '0 4rem'}}>
@@ -71,17 +96,13 @@ const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
           {renderUserMainInfo()}
         </Grid.Item>
         <Grid.Item xs={4} style={{justifyContent: 'flex-start'}}>
-          <h3 
-            onClick={() => handleOrderChange('fullName')}
-            style={{
-              color: theme.color.text, fontSize: theme.fontSize.h3, fontFamily: theme.fonts.semibold, cursor: 'pointer'
-            }}>User</h3>
+          {renderUserDetails()}
         </Grid.Item>
         <Grid.Item xs={5} style={{justifyContent: 'flex-start'}}>
           <h3 
             onClick={() => handleOrderChange('role')}
             style={{
-              color: theme.color.textSecondary, fontSize: theme.fontSize.h3, fontFamily: theme.fonts.semibold, 
+              color: theme.color.textSecondary, fontSize: theme.fontSizes.h3, fontFamily: theme.fonts.semibold, 
               cursor: 'pointer' 
             }}>Role</h3>
         </Grid.Item>
