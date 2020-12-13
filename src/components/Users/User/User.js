@@ -64,7 +64,7 @@ const User = ({_id, avatar, firstName, lastName, email,
           <Toggler isChecked={isActiveState} onChange={() => setIsActiveState((prevState) => !prevState)} />
         </Grid.Item>
         <Grid.Item xs={2} style={{alignItems: 'flex-end'}}>
-          <div style={{display: 'flex'}}>
+          <div style={{display: 'flex', alignItems: 'center'}}>
             {isActiveState && 
             <Link to="/edit">
               <IconItem name="Settings" onClick={() => editUser()} style={{marginRight: '1.5rem'}} />

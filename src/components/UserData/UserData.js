@@ -3,7 +3,7 @@ import { withTheme } from 'styled-components';
 
 import User from '../../resources/images/UserProfile.png';
 import useToasts from "../../hooks/useToasts";
-import { Plus, Key } from '../../Icons';
+import { Settings, Key } from '../../Icons';
 import UserIcon from '../../resources/images/UserProfile.png';
 import { useForm } from "react-hook-form";
 
@@ -15,7 +15,6 @@ import ToggleSlider from '../primitives/ToggleSlider';
 import Input from '../primitives/Input';
 import Select from '../primitives/Select';
 import Divider from '../primitives/Divider';
-import Collapsible from '../primitives/Collapsible';
 import Dropdown from '../primitives/Dropdown';
 import useDropdown from '../../hooks/useDropdown';
 
@@ -25,12 +24,13 @@ const ROLES = [{ label: 'Role', value: '' }, { label: 'Admin', value: 'Admin' },
 
 const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
 
+  const { handleSubmit, register, errors } = useForm();
 
   const [addToast, renderToasts] = useToasts();
   const [ref, isOpen, open, close] = useDropdown();
 
   const [user, setUser] = useState({});
-  const [showPermissionGroup1, setShowPermissionGroup1] = useState(false);
+
 
   useEffect(() => {
     setUser(userObj);
@@ -44,18 +44,31 @@ const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
   //     [newUser, ...prevUsers]);
   //   addToast('success', `${fullName} has been added!`);
   // };
-  const { firstName, lastName, isActive, role, email,
-    permissionGroupOne, permissionGroupTwo, permissionGroupThree, permissionGroupArray1, 
-    permissionGroupArray2, permissionGroupArray3} = user;
+  const { firstName, lastName, isActive, role, email, isSuper, permissions} = user;
 
 
-  const { handleSubmit, register, errors } = useForm({
-    defaultValues: {
-      firstName,
-      lastName,
-      role
-    }
-  });
+  // handles
+  const handleDeactivateUser = () => {
+    setUser((prevState) => ({...prevState, isActive: !prevState.isActive}));
+  };
+
+  const handleSuperAdmin = () => {
+    setUser((prevState) => ({...prevState, isSuper: !prevState.isSuper}));
+  };
+
+  const handlePermissionOne = () => {
+    setUser((prevState) => ({...prevState, permissionGroupOne: !prevState.permissionGroupOne}));
+  };
+
+  const handleInvitation = () => {
+    addToast('success', `${firstName} ${lastName} has been invited again!`);
+  };
+
+  const onSubmit = (data) => {
+    const { firstName, lastName} = data;
+    addToast('success', `${firstName} ${lastName} has been saved!`);
+  };
+
     
   // renders
   const renderUserMainInfo = () => (
@@ -77,6 +90,7 @@ const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
         <p style={{color: theme.color.text, fontFamily: theme.fonts.light}}>{email}</p>
       </Flex>
       <Button 
+        onClick={() => handleInvitation()}
         style={{marginTop: '2rem', lineHeight: '14px'}}
         size="small"
         color="secondary"
@@ -85,37 +99,41 @@ const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
       </Button>
     </>
   );
+  
 
   const renderUserDetails = () => (
     <>
       <div style={{width: '100%'}}>
-        <h3 
-          onClick={() => handleOrderChange('fullName')}
+        <h3
           style={{
             color: theme.color.text, fontSize: theme.fontSizes.h1, marginLeft: '1rem',
             fontFamily: theme.fonts.semibold, cursor: 'pointer'
           }}>Details</h3>
         <Flex margin="1rem 1rem 0 0" align="center">
-          <ToggleSlider isChecked={user.isActive} onChange={() => setIsActive((prevState) => !prevState)} />
+          <ToggleSlider isChecked={isActive} register={register({ required: true })} 
+            name="isActive" onChange={() => handleDeactivateUser()} />
           <span style={{marginLeft: '0.8rem', fontFamily: theme.fonts.light}}>The user is {user.isActive ? <span 
             style={{fontFamily: theme.fonts.bold}}>Active</span> : 
             <span style={{fontFamily: theme.fonts.bold}}>Inactive</span>}</span>
         </Flex>
         <Input
-          disabled={!user.isActive}
+          disabled={!isActive}
           errors={errors}
+          defaultValue={firstName}
           register={register({ required: true })} 
           name="firstName" label="*First Name" />
         <Input 
-          disabled={!user.isActive}
+          disabled={!isActive}
           errors={errors}
+          defaultValue={lastName}
           register={register({ required: true })} 
           name="lastName" label="*Last Name" />
         <Select style={{marginTop: '0.75rem'}} 
-          options={ROLES} register={register({ required: true })} name="role" errors={errors} width='100%' />
+          options={ROLES} register={register({ required: true })} 
+          name="role" defaultValue={role} errors={errors} width='100%' />
       </div>
       <Button
-        style={{marginTop: '9.93rem', lineHeight: '1rem'}}
+        style={{marginTop: '7.5rem', lineHeight: '1rem'}}
         size="small"
         color="primary"
         variant="contained"
@@ -137,54 +155,46 @@ const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
         <span style={{color:theme.color.text, fontFamily: theme.fonts.light}}>{role}</span>
       </Flex>
       <Flex justify="space-between" width="100%" align="flex-end" margin="2rem 0 1rem 0">
-        <span>Super Admin</span>
-        <ToggleSlider isChecked={isActive} onChange={() => setIsActive((prevState) => !prevState)} />
+        <span style={{color: theme.color.text}}>Super Admin</span>
+        <ToggleSlider isChecked={isSuper} onChange={()=> handleSuperAdmin()} />
       </Flex>
-      <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '2rem 0'}} />
-      <Dropdown 
-        style={{width: '100%'}}
-        // isOpen={isOpen}
-        onClick={open}
-        header={
-          <Flex justify="space-between" width="100%" align="flex-end" >
-            <span>Permission Group 1</span>
-            <ToggleSlider isChecked={permissionGroupOne} onChange={() => setIsActive((prevState) => !prevState)} />
-          </Flex>
-        } 
-        content={<h1>Testing here</h1>}/>
-      <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '2rem 0'}} />
-      <Dropdown 
-        style={{width: '100%'}}
-        // isOpen={isOpen}
-        onClick={open}
-        header={
-          <Flex justify="space-between" width="100%" align="flex-end" >
-            <span>Permission Group 2</span>
-            <ToggleSlider isChecked={permissionGroupTwo} onChange={() => setIsActive((prevState) => !prevState)} />
-          </Flex>
-        } 
-        content={<><h1>Testing here</h1><h1>Testing here</h1><h1>Testing here</h1><h1>Testing here</h1> </>}/>
-      <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '2rem 0'}} />  
-      <Dropdown 
-        style={{width: '100%'}}
-        // isOpen={isOpen}
-        onClick={open}
-        header={
-          <Flex justify="space-between" width="100%" align="flex-end" >
-            <span>Permission Group 3</span>
-            <ToggleSlider isChecked={permissionGroupThree} onChange={() => setIsActive((prevState) => !prevState)} />
-          </Flex>
-        } 
-        content={<h1>Testing here</h1>}/>
-      <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '2rem 0'}} />  
+      <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '1rem 0 2rem 0'}} />
+      {
+        permissions?.map((perm, index) => (
+          <React.Fragment key={index}>
+            <Flex align="flex-start" width="100%">
+              <Dropdown 
+                style={{width: '100%'}}
+                onClick={open}
+                header={
+                  <Flex justify="space-between" width="100%" align="flex-end" >
+                    <span style={{color: theme.color.text}}>Permission Group {index+1}</span>
+                  </Flex>
+                } 
+                content={<ul>
+                  {perm.permissionGroupArray.map((item, subIndex) => (
+                    <Flex width="100%" justify="space-between" key={subIndex}>
+                      <li key={subIndex}>Permission {index+1}{subIndex+1}</li>
+                      <ToggleSlider isChecked={item} onChange={()=> handleSuperAdmin()} />
+                    </Flex>
+                  ))}
+                </ul>}/>
+              <ToggleSlider name="permissionOne" register={register()}
+                isChecked={perm.hasPermission} onChange={() => handlePermissionOne()} style={{marginTop: '0.5rem'}} />
+            </Flex>
+            <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '2rem 0'}} />  
+          </React.Fragment>
+        ))
+      }
     </>
   );
+
   
   return (
     <div style={{backgroundColor: theme.color.backgroundSec, height: '85%', padding: '0 4rem'}}>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <AddEditButton onClick={() => handleAddModalOpen()}>
-          <Plus />
+        <AddEditButton style={{backgroundColor: theme.color.gray200}} onClick={() => handleAddModalOpen()}>
+          <Settings />
         </AddEditButton>
         <Button size="small"
           color="primary"
@@ -197,11 +207,17 @@ const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
         <Grid.Item xs={3} style={{alignItems: 'center', justifyContent: 'flex-start'}}>
           {renderUserMainInfo()}
         </Grid.Item>
-        <Grid.Item xs={4} style={{justifyContent: 'flex-start'}}>
-          {renderUserDetails()}
-        </Grid.Item>
-        <Grid.Item xs={5} style={{justifyContent: 'flex-start'}}>
-          {renderUserPermission()}
+        <Grid.Item xs={9}>
+          <form onSubmit={handleSubmit(onSubmit)} style={{width: '100%'}}>
+            <Grid>
+              <Grid.Item xs={5} style={{justifyContent: 'flex-start', padding: '0 4rem'}}>
+                {renderUserDetails()}
+              </Grid.Item>
+              <Grid.Item xs={7} style={{justifyContent: 'flex-start', padding: '0 4rem'}}>
+                {renderUserPermission()}
+              </Grid.Item>
+            </Grid>
+          </form>
         </Grid.Item>
       </Grid>
       {renderToasts()}

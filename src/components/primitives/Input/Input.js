@@ -95,6 +95,7 @@ const Input = ({
           type={type}
           name={name}
           size={size}
+          defaultValue={defaultValue}
           tabIndex="0"
           onChange={handleChange}
           onFocus={handleFocusToggle}

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+
 import { withTheme } from 'styled-components';
 
 import User from '../../resources/images/UserProfile.png';
 import { users } from '../../utils/data';
+import { generateId } from '../../utils/helpers';
 import { paginate } from '../../utils/paginate';
 import useToasts from "../../hooks/useToasts";
 import { Plus, DownArrow, UpArrow } from '../../Icons';
@@ -60,8 +62,32 @@ const Table = ({searchState, onThemeChange, isDark, setUser, theme}) => {
   // user add
   const handleUserAdd = (data) => {
     const { firstName, lastName, email, role } = data;
-    const newUser = {_id: getRandomInt(1000), 
-      avatar: User, firstName, lastName, email, role, isActive: true};
+    const newUser = {_id: generateId(), 
+      avatar: User, firstName, lastName, email, role, isActive: true, isSuper: false,
+      permissionGroupOne: false,
+      permissionGroupArray1: [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      permissionGroupTwo: true,
+      permissionGroupArray2: [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      permissionGroupThree: false,
+      permissionGroupArray3: [
+        false,
+        false,
+        true,
+        true,
+        false
+      ]};
     setUserList((prevUsers) => 
       [newUser, ...prevUsers]);
     addToast('success', `${firstName + " " + lastName} has been invited!`);

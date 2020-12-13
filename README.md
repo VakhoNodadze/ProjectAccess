@@ -1,6 +1,8 @@
 Project is all done with custom components. 
 No third library(bootstrap, material ui, antd e.g.) used!
 
+Should implement Context API to prevent prop drilling!
+
 - JSON  Held Content of the table.
 - Sorting on client side
 - Elastic Filtering of the table rows (via the search input)

@@ -11,7 +11,7 @@ const Dropdown = React.forwardRef(({ children, value, header, content, size, kin
   const containerRef = useRef();
   const [contentVisible, setContentVisible] = useState(false);
 
-  const handleShowContent = () =>{
+  const handleShowContent = () => {
     setContentVisible((prevState) => !prevState);
   };
 
@@ -43,8 +43,8 @@ const Dropdown = React.forwardRef(({ children, value, header, content, size, kin
   );
 });
 
-Dropdown.defaultProps = {
-  isOpen: false
-};
+// Dropdown.defaultProps = {
+//   isOpen: false
+// };
 
 export default React.memo(Dropdown);
