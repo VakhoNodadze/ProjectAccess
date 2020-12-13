@@ -172,7 +172,7 @@ const UserData = ({ theme}) => {
                 content={<ul>
                   {perm.permissionGroupArray.map((item, subIndex) => (
                     <Flex width="100%" justify="space-between" key={subIndex}>
-                      <li key={subIndex}>Permission {index+1}{subIndex+1}</li>
+                      <li style={{color: theme.color.text}} key={subIndex}>Permission {index+1}{subIndex+1}</li>
                       <ToggleSlider register={register} name={'subPerm' + index + subIndex} isChecked={item} 
                         onChange={()=> handleSubPermissions(index, subIndex)} />
                     </Flex>
