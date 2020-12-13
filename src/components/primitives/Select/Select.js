@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Selector, Option } from './styled';
 
 const Select = ({
@@ -15,6 +16,16 @@ const Select = ({
         {option.label}</Option>) : <Option>{defaultValue}</Option>}
     </Selector>
   );
+};
+
+Select.propTypes = {
+  isActive: PropTypes.bool,
+  onChange: PropTypes.func
+};
+
+Select.defaultProps = {
+  isActive: true,
+  onChange: null
 };
 
 export default Select;
