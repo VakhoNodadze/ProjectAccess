@@ -39,7 +39,6 @@ const Input = ({
   const containerRef = useRef();
 
   const Icon = icon ? icons[icon] : null;
-  const { Spinner, Check } = icons;
 
   const [input, setInput] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -64,11 +63,6 @@ const Input = ({
         label={label}
         circular={circular}
       >
-        {loading && (
-          <StyledSpinner>
-            <Spinner />
-          </StyledSpinner>
-        )}
         {icon && (
           <StyledIcon className="icon">
             <Icon color={isFocused || input.length > 0 ? 'rgba(0, 0, 0, 0.54)' : '#d9d9d9'} />
