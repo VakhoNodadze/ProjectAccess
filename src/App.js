@@ -28,7 +28,6 @@ const App = () => {
         userList[i] = user;
       }
     }
-    console.log('updating');
   }, [user]);
 
   useEffect(() => {

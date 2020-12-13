@@ -63,8 +63,8 @@ const UserData = ({ theme}) => {
   
 
   const onSubmit = (data) => {
-    const { firstName, lastName, role, isActive } = data;
-    setUser({...localUser, firstName, lastName, role, isActive});
+    const { firstName, lastName, role, isActive, isSuper } = data;
+    setUser({...localUser, firstName, lastName, role, isSuper, isActive});
     addToast('success', `${firstName} ${lastName} has been saved!`);
     history.push('/');
   };
@@ -89,14 +89,14 @@ const UserData = ({ theme}) => {
         <h1 style={{color: theme.color.huge, textAlign: 'center', lineHeight: '2rem '}}>{firstName + " " + lastName}</h1>
         <p style={{color: theme.color.text, fontFamily: theme.fonts.light}}>{email}</p>
       </Flex>
-      <Button 
+      {isActive && <Button 
         onClick={() => handleInvitation()}
         style={{marginTop: '2rem', lineHeight: '14px'}}
         size="small"
         color="secondary"
         variant="contained">
         Resend Invitation
-      </Button>
+      </Button>}
     </>
   );
   
@@ -132,7 +132,7 @@ const UserData = ({ theme}) => {
           options={ROLES} register={register({ required: true })} 
           name="role" defaultValue={role} errors={errors} width='100%' />
       </div>
-      <Button
+      {isActive && <Button
         style={{marginTop: '7.5rem', lineHeight: '1rem'}}
         size="small"
         color="primary"
@@ -140,7 +140,7 @@ const UserData = ({ theme}) => {
         type="submit"
       >
           Save Changes
-      </Button>
+      </Button>}
     </>
   );
 
@@ -156,7 +156,7 @@ const UserData = ({ theme}) => {
       </Flex>
       <Flex justify="space-between" width="100%" align="flex-end" margin="2rem 0 1rem 0">
         <span style={{color: theme.color.text}}>Super Admin</span>
-        <ToggleSlider name={isSuper} register={register} isChecked={isSuper} onChange={()=> handleSuperAdmin()} />
+        <ToggleSlider name="isSuper" register={register} isChecked={isSuper} onChange={()=> handleSuperAdmin()} />
       </Flex>
       <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '1rem 0 2rem 0'}} />
       {
@@ -173,13 +173,13 @@ const UserData = ({ theme}) => {
                   {perm.permissionGroupArray.map((item, subIndex) => (
                     <Flex width="100%" justify="space-between" key={subIndex}>
                       <li key={subIndex}>Permission {index+1}{subIndex+1}</li>
-                      <ToggleSlider register={register} name={[index][subIndex]} isChecked={item} 
+                      <ToggleSlider register={register} name={'subPerm' + index + subIndex} isChecked={item} 
                         onChange={()=> handleSubPermissions(index, subIndex)} />
                     </Flex>
                   ))}
                 </ul>}/>
               <ToggleSlider register={register()} name={index}
-                isChecked={perm.hasPermission} name={index}
+                isChecked={perm.hasPermission} name={'perm' + index}
                 onChange={() => handlePermissions(index)} style={{marginTop: '0.5rem'}} />
             </Flex>
             <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '2rem 0'}} />  
