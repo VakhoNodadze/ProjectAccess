@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import GlobalStyle from './styled/global';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from 'styled-components';
@@ -8,6 +8,8 @@ import { themes, light, dark } from './styled/themes';
 import Flex from './components/primitives/Flex';
 import Main from './pages/Main';
 import EditUser from './pages/EditUser';
+
+export const StateContext = createContext({user: {}});
 
 const App = () => {
 
@@ -27,17 +29,17 @@ const App = () => {
 
   return (
     <ThemeProvider theme={themes[theme.type]}>
-      <Flex direction="column" full height="100vh" style={{backgroundColor: background}}>
-        <GlobalStyle />
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" component={() => <Main onThemeChange={handleThemeChange} 
-              setUser={setUser} isDark={theme.type}/>} exact />
-            <Route path="/edit" component={() => <EditUser 
-              userObj={user} setUser={setUser} onThemeChange={handleThemeChange} isDark={theme.type}/>} exact />
-          </Switch>
-        </BrowserRouter>
-      </Flex>
+      <StateContext.Provider value={{user, setUser, onThemeChange: handleThemeChange, isDark: theme.type}}>
+        <Flex direction="column" full height="100vh" style={{backgroundColor: background}}>
+          <GlobalStyle />
+          <BrowserRouter>
+            <Switch>
+              <Route path="/" component={() => <Main/>} exact />
+              <Route path="/edit" component={() => <EditUser />} exact />
+            </Switch>
+          </BrowserRouter>
+        </Flex>
+      </StateContext.Provider>
     </ThemeProvider>
   );
 };

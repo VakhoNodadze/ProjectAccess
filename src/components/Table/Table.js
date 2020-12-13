@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { withTheme } from 'styled-components';
 
@@ -8,6 +8,7 @@ import { generateId } from '../../utils/helpers';
 import { paginate } from '../../utils/paginate';
 import useToasts from "../../hooks/useToasts";
 import { Plus, DownArrow, UpArrow } from '../../Icons';
+import { StateContext } from '../../App';
 
 import AddEditButton from '../primitives/AddEditButton';
 import Button from '../primitives/Button';
@@ -22,7 +23,10 @@ import Select from '../primitives/Select';
 
 const PER_PAGE = [{ label: 5, value: 5 }, { label: 10, value: 10 }, { label: 15, value: 15 }];
 
-const Table = ({searchState, onThemeChange, isDark, setUser, theme}) => {
+const Table = ({searchState, theme}) => {
+
+  const { setUser, onThemeChange, isDark } = useContext(StateContext);
+
   const [addToast, renderToasts] = useToasts();
 
   const [userList, setUserList] = useState(users);
@@ -37,8 +41,9 @@ const Table = ({searchState, onThemeChange, isDark, setUser, theme}) => {
   const getPagedData = () => {
     const filteredUsers = userList.filter((user) => {
       return (
-        user.email.toLowerCase().indexOf(searchState.toLowerCase()) !== -1 || 
-        user.fullName.toLowerCase().indexOf(searchState.toLowerCase()) !== -1
+        user.email.toLowerCase().indexOf(searchState.toLowerCase()) !== -1 ||
+        user.firstName.toLowerCase().indexOf(searchState.toLowerCase()) !== -1 || 
+        user.lastName.toLowerCase().indexOf(searchState.toLowerCase()) !== -1
       );
     });
     const sorted = _.orderBy(filteredUsers, [sortList.path], [sortList.order]);

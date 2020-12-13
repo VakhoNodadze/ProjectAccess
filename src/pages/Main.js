@@ -7,7 +7,7 @@ import Table from '../components/Table';
 import Input from '../components/primitives/Input';
 import { Search } from '../Icons';
 
-const Main = ({onThemeChange, isDark, setUser, theme}) => {
+const Main = ({theme}) => {
 
   const [searchState, setSearchState] = useState('');
 
@@ -22,7 +22,7 @@ const Main = ({onThemeChange, isDark, setUser, theme}) => {
           <Input onChange={(e) => setSearchState(e)} placeholder="Type to filter the table" rightLabel={<Search />} />
         </Grid.Item>
       </Grid>
-      <Table setUser={setUser} searchState={searchState} onThemeChange={onThemeChange} isDark={isDark} />
+      <Table searchState={searchState} />
     </Flex>
   );
 };

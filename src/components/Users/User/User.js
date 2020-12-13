@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { withTheme } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { StateContext } from '../../../App';
 
 import { IconItem, Key } from '../../../Icons';
 import Grid from '../../primitives/Grid';
@@ -9,8 +10,8 @@ import Avatar from '../../primitives/Avatar';
 import Toggler from '../../primitives/ToggleSlider';
 import Divider from '../../primitives/Divider';
 
-const User = ({_id, avatar, firstName, lastName, email, 
-  role, isActive, onDeleteModalOpen, setUserToDelete, setUser, user,theme}) => {
+const User = ({_id, avatar, firstName, setUser, lastName, email, 
+  role, isActive, onDeleteModalOpen, setUserToDelete, user,theme}) => {
   const [ isActiveState, setIsActiveState ] = useState(isActive);
 
   const onDeleteModal = () => {

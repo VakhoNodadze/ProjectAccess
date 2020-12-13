@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { withTheme } from 'styled-components';
 
-import User from '../../resources/images/UserProfile.png';
+import { StateContext } from '../../App';
 import useToasts from "../../hooks/useToasts";
 import { Settings, Key } from '../../Icons';
 import UserIcon from '../../resources/images/UserProfile.png';
@@ -22,9 +22,12 @@ import useDropdown from '../../hooks/useDropdown';
 
 const ROLES = [{ label: 'Role', value: '' }, { label: 'Admin', value: 'Admin' }, { label: 'User', value: 'User' }];
 
-const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
+const UserData = ({ theme}) => {
 
   const { handleSubmit, register, errors } = useForm();
+
+
+  const { user: userObj, onThemeChange, isDark } = useContext(StateContext);
 
   const [addToast, renderToasts] = useToasts();
   const [ref, isOpen, open, close] = useDropdown();
@@ -35,15 +38,6 @@ const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
   useEffect(() => {
     setUser(userObj);
   }, [userObj]);
-  // user add
-  // const handleUserAdd = (data) => {
-  //   const fullName = data.first_name + data.last_name;
-  //   const newUser = {_id: getRandomInt(1000), 
-  //     avatar: User, fullName, email: data.email, role: data.role, isActive: true};
-  //   setUser((prevUsers) => 
-  //     [newUser, ...prevUsers]);
-  //   addToast('success', `${fullName} has been added!`);
-  // };
   const { firstName, lastName, isActive, role, email, isSuper, permissions} = user;
 
 
@@ -193,7 +187,7 @@ const UserData = ({ userObj, onThemeChange, isDark, theme}) => {
   return (
     <div style={{backgroundColor: theme.color.backgroundSec, height: '85%', padding: '0 4rem'}}>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <AddEditButton style={{backgroundColor: theme.color.gray200}} onClick={() => handleAddModalOpen()}>
+        <AddEditButton style={{backgroundColor: theme.color.gray200}}>
           <Settings />
         </AddEditButton>
         <Button size="small"
