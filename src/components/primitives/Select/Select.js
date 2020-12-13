@@ -19,13 +19,11 @@ const Select = ({
 };
 
 Select.propTypes = {
-  isActive: PropTypes.bool,
-  onChange: PropTypes.func
+  isActive: PropTypes.bool
 };
 
 Select.defaultProps = {
-  isActive: true,
-  onChange: null
+  isActive: true
 };
 
 export default Select;
