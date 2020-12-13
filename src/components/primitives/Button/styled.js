@@ -55,19 +55,19 @@ const StyledContainer = styled.button`
         `;
     case 'outlined':
       return css`
-          background: transparent;
-          border-radius: ${props.theme.borderRadius.default};
-          border: solid 1px ${props.theme.color[props.color]};
-          color: ${props.theme.color[props.color]};
+          border-radius: ${props.theme.borderRadius.rounded};
+          background-color: ${props.active
+    ? props.theme.palette[props.color][300]
+    : props.theme.palette[props.color][200]};
+          color: ${props.theme.palette[props.color][1000]};
           box-shadow: none;
         `;
     case 'contained':
       return css`
           background-color: ${props.theme.palette[props.color][1000]};
-          border-radius: ${props.theme.borderRadius.default};
+          border-radius: ${props.theme.borderRadius.rounded};
           border: 0;
           color: #fff;
-
           &:hover {
             opacity: 0.8;
           }

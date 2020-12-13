@@ -7,7 +7,7 @@ import { paginate } from '../../utils/paginate';
 import useToasts from "../../hooks/useToasts";
 import { Plus, DownArrow, UpArrow } from '../../Icons';
 
-import PlusButton from '../primitives/PlusButton';
+import AddEditButton from '../primitives/AddEditButton';
 import Button from '../primitives/Button';
 import Pagination from '../primitives/Pagination';
 import Grid from '../primitives/Grid';
@@ -64,7 +64,7 @@ const Table = ({searchState, onThemeChange, isDark, theme}) => {
       avatar: User, fullName, email: data.email, role: data.role, status: true};
     setUserList((prevUsers) => 
       [newUser, ...prevUsers]);
-    addToast('success', `${fullName} has been added!`);
+    addToast('success', `${fullName} has been invited!`);
   };
 
   // user delete
@@ -116,9 +116,9 @@ const Table = ({searchState, onThemeChange, isDark, theme}) => {
   return (
     <div style={{backgroundColor: theme.color.backgroundSec, height: '85%', padding: '0 4rem'}}>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <PlusButton onClick={() => handleAddModalOpen()}>
+        <AddEditButton onClick={() => handleAddModalOpen()}>
           <Plus />
-        </PlusButton>
+        </AddEditButton>
         <Button size="small"
           color="primary"
           variant="contained"

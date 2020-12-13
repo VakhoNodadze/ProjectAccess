@@ -36,6 +36,7 @@ export const themes = {
       black: '#000000',
       text: '#000',
       textSecondary: 'rgba(0,0,0,0.37)',
+      inActiveText: '#C6C6C6',
       placeholder: 'rgba(0,0,0,0.5)',
       reverseText: '#00000029',
       gray000: '#dcdcdc',
@@ -71,6 +72,7 @@ export const themes = {
       colCount: 12
     },
     fontSizes: {
+      huge: '48px',
       h1: '36px',
       h2: '21px',
       h3: '16px',
@@ -120,7 +122,7 @@ export const themes = {
         200: 'rgba(0, 0, 0, .034)',
         300: 'rgba(0, 0, 0, .084)',
         500: 'rgba(0, 0, 0, .34)',
-        1000: 'rgba(0, 0, 0, 1)'
+        1000: '#7E7EF1'
       },
       primary: {
         200: 'rgba(38, 117, 254, .064)',
@@ -245,6 +247,7 @@ export const themes = {
       text: '#fff',
       reverseText: '#06090f',
       textSecondary: 'rgba(255, 255, 255, 0.9)',
+      inActiveText: '#C6C6C6',
       placeholder: 'rgba(255,255,255,0.5)',
       gray000: '#dcdcdc',
       gray100: '#00000029',
@@ -279,6 +282,7 @@ export const themes = {
       colCount: 12
     },
     fontSizes: {
+      huge: '48px',
       h1: '36px',
       h2: '21px',
       h3: '16px',
@@ -328,7 +332,7 @@ export const themes = {
         200: 'rgba(0, 0, 0, .034)',
         300: 'rgba(0, 0, 0, .084)',
         500: 'rgba(0, 0, 0, .34)',
-        1000: 'rgba(0, 0, 0, 1)'
+        1000: '#7E7EF1'
       },
       primary: {
         200: 'rgba(38, 117, 254, .064)',
@@ -366,7 +370,7 @@ export const themes = {
       normal: '64px',
       large: '84px',
       big: '120px',
-      huge: '154px'
+      huge: '232px'
     },
     imageSize: {
       mini: '124px',

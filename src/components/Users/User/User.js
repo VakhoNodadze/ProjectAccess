@@ -33,7 +33,7 @@ const User = ({_id, avatar, fullName, email, role, status, onDeleteModalOpen, se
     <div style={{opacity: isActive ? '1' : '0.3'}}>
       <Grid>
         <Grid.Item xs={1} style={{alignItems: 'center'}}>
-          <Avatar avatar={avatar}/>
+          <Avatar avatar={avatar} />
         </Grid.Item>
         <Grid.Item xs={4}>
           <Flex direction="column" align="flex-start">
