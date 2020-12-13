@@ -12,7 +12,7 @@ const Dropdown = React.forwardRef(({ children, value, header, content, size, kin
   const [contentVisible, setContentVisible] = useState(false);
 
   const handleShowContent = () => {
-    setContentVisible((prevState) => !prevState);
+    setContentVisible(true);
   };
 
   const handleHideContent = () => setContentVisible(false);
@@ -36,7 +36,7 @@ const Dropdown = React.forwardRef(({ children, value, header, content, size, kin
     <div ref={ref} {...rest}>
       <div style={style} ref={containerRef} onClick={handleShowContent}>
         {children}
-        {header && <DropdownHeader>{header}</DropdownHeader>}
+        {header && <DropdownHeader >{header}</DropdownHeader>}
         {content && <DropdownContent isVisible={contentVisible}>{content}</DropdownContent>}
       </div>
     </div>

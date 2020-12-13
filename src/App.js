@@ -23,6 +23,15 @@ const App = () => {
   const [addToast, renderToasts] = useToasts();
 
   useEffect(() => {
+    for(let i = 0; i < userList.length; i++){
+      if(user?._id === userList[i]._id){
+        userList[i] = user;
+      }
+    }
+    console.log('updating');
+  }, [user]);
+
+  useEffect(() => {
     setBackground(theme.color.backgroundPr);
   }, [theme]);
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { withTheme } from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
@@ -26,38 +26,45 @@ const UserData = ({ theme}) => {
 
   const { handleSubmit, register, errors } = useForm();
   const history = useHistory();
-  const { user: userObj, onThemeChange, isDark, addToast } = useContext(StateContext);
+  const { user, onThemeChange, isDark, addToast, setUser } = useContext(StateContext);
   const [ref, isOpen, open, close] = useDropdown();
 
-  const [user, setUser] = useState({});
+  const [localUser, setLocalUser] = useState(user);
 
 
-  useEffect(() => {
-    setUser(userObj);
-  }, [userObj]);
-  const { firstName, lastName, isActive, role, email, isSuper, permissions} = user;
+  const { firstName, lastName, isActive, role, email, isSuper, permissions} = localUser;
 
 
   // handles
   const handleDeactivateUser = () => {
-    setUser((prevState) => ({...prevState, isActive: !prevState.isActive}));
+    setLocalUser((prevState) => ({...prevState, isActive: !prevState.isActive}));
   };
 
   const handleSuperAdmin = () => {
-    setUser((prevState) => ({...prevState, isSuper: !prevState.isSuper}));
+    setLocalUser((prevState) => ({...prevState, isSuper: !prevState.isSuper}));
   };
 
-  const handlePermissionOne = () => {
-    setUser((prevState) => ({...prevState, permissionGroupOne: !prevState.permissionGroupOne}));
+  const handlePermissions = (ind) => {
+    const newArray = [...localUser.permissions];
+    newArray[ind].hasPermission = !newArray[ind].hasPermission;
+    setLocalUser((prevState) => ({...prevState, permissions: [...newArray]}));
+  };
+
+  const handleSubPermissions = (ind, subInd) => {
+    const clone = JSON.parse(JSON.stringify(localUser));
+    clone.permissions[ind].permissionGroupArray[subInd] = !clone.permissions[ind].permissionGroupArray[subInd];
+    setLocalUser(clone);
   };
 
   const handleInvitation = () => {
-    addToast('success', `${firstName} ${lastName} has been invited again!`);
+    addToast('success', `${firstName} ${lastName} has been invited again!`);  
     history.push('/');
   };
+  
 
   const onSubmit = (data) => {
-    const { firstName, lastName} = data;
+    const { firstName, lastName, role, isActive } = data;
+    setUser({...localUser, firstName, lastName, role, isActive});
     addToast('success', `${firstName} ${lastName} has been saved!`);
     history.push('/');
   };
@@ -149,7 +156,7 @@ const UserData = ({ theme}) => {
       </Flex>
       <Flex justify="space-between" width="100%" align="flex-end" margin="2rem 0 1rem 0">
         <span style={{color: theme.color.text}}>Super Admin</span>
-        <ToggleSlider isChecked={isSuper} onChange={()=> handleSuperAdmin()} />
+        <ToggleSlider name={isSuper} register={register} isChecked={isSuper} onChange={()=> handleSuperAdmin()} />
       </Flex>
       <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '1rem 0 2rem 0'}} />
       {
@@ -160,20 +167,20 @@ const UserData = ({ theme}) => {
                 style={{width: '100%'}}
                 onClick={open}
                 header={
-                  <Flex justify="space-between" width="100%" align="flex-end" >
-                    <span style={{color: theme.color.text}}>Permission Group {index+1}</span>
-                  </Flex>
+                  <span style={{color: theme.color.text}}>Permission Group {index+1}</span>
                 } 
                 content={<ul>
                   {perm.permissionGroupArray.map((item, subIndex) => (
                     <Flex width="100%" justify="space-between" key={subIndex}>
                       <li key={subIndex}>Permission {index+1}{subIndex+1}</li>
-                      <ToggleSlider isChecked={item} onChange={()=> handleSuperAdmin()} />
+                      <ToggleSlider register={register} name={[index][subIndex]} isChecked={item} 
+                        onChange={()=> handleSubPermissions(index, subIndex)} />
                     </Flex>
                   ))}
                 </ul>}/>
-              <ToggleSlider name="permissionOne" register={register()}
-                isChecked={perm.hasPermission} onChange={() => handlePermissionOne()} style={{marginTop: '0.5rem'}} />
+              <ToggleSlider register={register()} name={index}
+                isChecked={perm.hasPermission} name={index}
+                onChange={() => handlePermissions(index)} style={{marginTop: '0.5rem'}} />
             </Flex>
             <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '2rem 0'}} />  
           </React.Fragment>
