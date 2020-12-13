@@ -86,7 +86,8 @@ const UserData = ({ theme}) => {
         </div>
         <span style={{color: theme.color.inActiveText, margin: theme.color.text,
           fontFamily: theme.fonts.light, cursor: 'pointer'}}>Upload a Photo</span>
-        <h1 style={{color: theme.color.text, textAlign: 'center', lineHeight: '2rem '}}>{firstName + " " + lastName}</h1>
+        <h1 style={{color: isActive ? theme.color.text : theme.color.placeholder,
+          textAlign: 'center', lineHeight: '2rem '}}>{firstName + " " + lastName}</h1>
         <p style={{color: theme.color.text, fontFamily: theme.fonts.light}}>{email}</p>
       </Flex>
       {isActive && <Button 
@@ -112,7 +113,7 @@ const UserData = ({ theme}) => {
         <Flex margin="1rem 1rem 0 0" align="center">
           <ToggleSlider isChecked={isActive} register={register({ required: true })} 
             name="isActive" onChange={() => handleDeactivateUser()} />
-          <span style={{marginLeft: '0.8rem', fontFamily: theme.fonts.light}}>The user is {user.isActive ? <span 
+          <span style={{marginLeft: '0.8rem', fontFamily: theme.fonts.light}}>The user is {isActive ? <span 
             style={{fontFamily: theme.fonts.bold}}>Active</span> : 
             <span style={{fontFamily: theme.fonts.bold}}>Inactive</span>}</span>
         </Flex>
@@ -155,8 +156,9 @@ const UserData = ({ theme}) => {
         <span style={{color:theme.color.text, fontFamily: theme.fonts.light}}>{role}</span>
       </Flex>
       <Flex justify="space-between" width="100%" align="flex-end" margin="2rem 0 1rem 0">
-        <span style={{color: theme.color.text}}>Super Admin</span>
-        <ToggleSlider name="isSuper" register={register} isChecked={isSuper} onChange={()=> handleSuperAdmin()} />
+        <span style={{color: isActive ? theme.color.text : theme.color.placeholder}}>Super Admin</span>
+        <ToggleSlider name="isSuper" register={register} isChecked={isSuper} 
+          onChange={()=> handleSuperAdmin()} isActive={isActive} />
       </Flex>
       <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '1rem 0 2rem 0'}} />
       {
@@ -167,20 +169,22 @@ const UserData = ({ theme}) => {
                 style={{width: '100%'}}
                 onClick={open}
                 header={
-                  <span style={{color: theme.color.text}}>Permission Group {index+1}</span>
+                  <span style={{color: isActive ? theme.color.text : theme.color.placeholder}}>
+                    Permission Group {index+1}</span>
                 } 
-                content={<ul>
+                content={isActive ? <ul>
                   {perm.permissionGroupArray.map((item, subIndex) => (
                     <Flex width="100%" justify="space-between" key={subIndex}>
-                      <li style={{color: theme.color.text}} key={subIndex}>Permission {index+1}{subIndex+1}</li>
+                      <li style={{color: isActive ? theme.color.text : theme.color.placeholder}} key={subIndex}>
+                        Permission {index+1}{subIndex+1}</li>
                       <ToggleSlider register={register} name={'subPerm' + index + subIndex} isChecked={item} 
                         onChange={()=> handleSubPermissions(index, subIndex)} />
                     </Flex>
                   ))}
-                </ul>}/>
+                </ul> : null}/>
               <ToggleSlider register={register()} name={index}
                 isChecked={perm.hasPermission} name={'perm' + index}
-                onChange={() => handlePermissions(index)} style={{marginTop: '0.5rem'}} />
+                onChange={() => handlePermissions(index)} style={{marginTop: '0.5rem'}} isActive={isActive} />
             </Flex>
             <Divider style={{backgroundColor: theme.color.divideBg, height: 2, margin: '2rem 0'}} />  
           </React.Fragment>

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Label, Slider } from './styled';
 
-const Toggler = ({ isChecked, register, onChange, name, ...props }) => (
+const Toggler = ({ isChecked, register, onChange, name, isActive, ...props }) => (
   <Label {...props}>
-    <input ref={register} name={name} type="checkbox" onChange={onChange} checked={isChecked} />
+    <input ref={register} name={name} type="checkbox" onChange={isActive ? onChange : null} checked={isChecked} />
     <Slider />
   </Label>
 );
