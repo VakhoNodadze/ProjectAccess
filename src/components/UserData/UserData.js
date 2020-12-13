@@ -86,7 +86,7 @@ const UserData = ({ theme}) => {
         </div>
         <span style={{color: theme.color.inActiveText, margin: theme.color.text,
           fontFamily: theme.fonts.light, cursor: 'pointer'}}>Upload a Photo</span>
-        <h1 style={{color: theme.color.huge, textAlign: 'center', lineHeight: '2rem '}}>{firstName + " " + lastName}</h1>
+        <h1 style={{color: theme.color.text, textAlign: 'center', lineHeight: '2rem '}}>{firstName + " " + lastName}</h1>
         <p style={{color: theme.color.text, fontFamily: theme.fonts.light}}>{email}</p>
       </Flex>
       {isActive && <Button 
