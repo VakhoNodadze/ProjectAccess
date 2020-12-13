@@ -69,30 +69,39 @@ const Table = ({searchState, theme}) => {
     const newUser = {
       _id: generateId(), 
       avatar: User, firstName, lastName, email, role, isActive: true, isSuper: false,
-      permissionGroupOne: false,
-      permissionGroupArray1: [
-        true,
-        true,
-        true,
-        false,
-        true
-      ],
-      permissionGroupTwo: true,
-      permissionGroupArray2: [
-        true,
-        true,
-        true,
-        true,
-        true
-      ],
-      permissionGroupThree: false,
-      permissionGroupArray3: [
-        false,
-        false,
-        true,
-        true,
-        false
-      ]};
+      permissions: [
+        {
+          hasPermission: false, 
+          permissionGroupArray: [
+            true,
+            true,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          hasPermission: false,
+          permissionGroupArray: [
+            true,
+            true,
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          hasPermission: true,
+          permissionGroupArray: [
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ]
+    };
     setUserList((prevUsers) => 
       [newUser, ...prevUsers]);
   };
