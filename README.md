@@ -13,4 +13,4 @@ Implemented Context to prevent prop drilling.
 - Assigning custom permission sets to users
 
 
-To run the program, clone the repository, run npm install and npm run.
+To run the program, clone the repository, run npm install and npm start.
