@@ -31,7 +31,7 @@ const Table = ({searchState, theme}) => {
   const [userToDelete, setUserToDelete] = useState(null);
   const [curPage, setCurPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
-  const [sortList, setSortList] = useState({ path: "fullName", order: "asc" });
+  const [sortList, setSortList] = useState({ path: "firstName", order: "asc" });
 
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -169,10 +169,10 @@ const Table = ({searchState, theme}) => {
         <Grid.Item xs={1} />
         <Grid.Item xs={4}>
           <h3 
-            onClick={() => handleOrderChange('fullName')}
+            onClick={() => handleOrderChange('firstName')}
             style={{
               color: theme.color.text, fontSize: theme.fontSizes.h3, fontFamily: theme.fonts.semibold, cursor: 'pointer'
-            }}>User {(sortList.path === 'fullName' && sortList.order === 'asc') ? 
+            }}>User {(sortList.path === 'firstName' && sortList.order === 'asc') ? 
               <DownArrow color={theme.color.text} /> : <UpArrow color={theme.color.text} />}</h3>
         </Grid.Item>
         <Grid.Item xs={3}>
