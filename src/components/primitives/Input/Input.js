@@ -50,7 +50,7 @@ const Input = ({
 
   const handleFocusToggle = () => setIsFocused(!isFocused);
 
-
+  console.log(errors);
   return (
     <StyledContainer size={size} label={label} ref={containerRef}>
       <StyledContent
@@ -71,6 +71,7 @@ const Input = ({
         {label && (
           <>
             <StyledLabel
+              style={{color: errors[name] ? 'red' : 'blue'}}
               className="label"
               size={size}
               disabled={disabled}

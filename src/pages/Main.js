@@ -12,7 +12,7 @@ const Main = ({theme}) => {
   const [searchState, setSearchState] = useState('');
 
   return (
-    <Flex direction="column" full>
+    <div className='flex-col flex w-full h-full'>
       <Grid style={{padding: "4rem 4rem 0 4rem", maxWidth: '100%'}}>
         <Grid.Item xs={1} />
         <Grid.Item xs={6}>
@@ -23,7 +23,7 @@ const Main = ({theme}) => {
         </Grid.Item>
       </Grid>
       <Table searchState={searchState} />
-    </Flex>
+    </div>
   );
 };
 

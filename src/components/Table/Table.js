@@ -33,8 +33,8 @@ const Table = ({searchState, theme}) => {
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [sortList, setSortList] = useState({ path: "firstName", order: "asc" });
 
-  const [addModalOpen, setAddModalOpen] = useState(false);
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const getPagedData = () => {
     const filteredUsers = userList.filter((user) => {
@@ -68,7 +68,13 @@ const Table = ({searchState, theme}) => {
     const { firstName, lastName, email, role } = data;
     const newUser = {
       _id: generateId(), 
-      avatar: User, firstName, lastName, email, role, isActive: true, isSuper: false,
+      avatar: User, 
+      firstName, 
+      lastName, 
+      email,
+      role, 
+      isActive: true, 
+      isSuper: false,
       permissions: [
         {
           hasPermission: false, 
@@ -127,26 +133,26 @@ const Table = ({searchState, theme}) => {
 
   // modals open
   const handleAddModalOpen = () => {
-    setAddModalOpen(true);
+    setIsAddModalOpen(true);
   };
 
   const handleDeleteModalOpen = () => {
-    setDeleteModalOpen(true);
+    setIsDeleteModalOpen(true);
   };
 
   //render modals
   const renderAddUserModal = () => (
     <AddUserModal
-      isOpen={addModalOpen}
-      onClose={() => setAddModalOpen(false)}
+      isOpen={isAddModalOpen}
+      onClose={() => setIsAddModalOpen(false)}
       onUserAdd={handleUserAdd}
     />
   );
 
   const renderDeleteUserModal = () => (
     <DeleteUserModal
-      isOpen={deleteModalOpen}
-      onClose={() => setDeleteModalOpen(false)}
+      isOpen={isDeleteModalOpen}
+      onClose={() => setIsDeleteModalOpen(false)}
       userToDelete={userToDelete}
       onUserDelete={handleUserDelete}
     />
@@ -226,8 +232,8 @@ const Table = ({searchState, theme}) => {
           onNextPage={handleNextPage}
         />
       </div>
-      {addModalOpen && renderAddUserModal()}
-      {deleteModalOpen && renderDeleteUserModal()}
+      {isAddModalOpen && renderAddUserModal()}
+      {isDeleteModalOpen && renderDeleteUserModal()}
       {/* {renderToasts()} */}
     </div>
   );

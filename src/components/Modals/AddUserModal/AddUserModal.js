@@ -35,7 +35,8 @@ const AddUserModal = ({ isOpen, onClose, onUserAdd, theme }) => {
               <Input 
                 errors={errors}
                 register={register({ required: true })} 
-                name="firstName" label="*First Name" />
+                name="firstName" label="*First Name" 
+              />
             </Grid.Item>
             <Grid.Item xs={5}>
               <Input 

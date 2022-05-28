@@ -43,7 +43,7 @@ const App = () => {
     <ThemeProvider theme={themes[theme.type]}>
       <StateContext.Provider 
         value={{user, setUser, onThemeChange: handleThemeChange, isDark: theme.type, addToast, userList, setUserList}}>
-        <Flex direction="column" full height="100vh" style={{backgroundColor: background}}>
+        <div className='flex flex-col h-screen' style={{backgroundColor: background}}>
           <GlobalStyle />
           <BrowserRouter>
             <Switch>
@@ -51,7 +51,7 @@ const App = () => {
               <Route path="/edit" component={() => <EditUser />} exact />
             </Switch>
           </BrowserRouter>
-        </Flex>
+        </div>
         {renderToasts()}
       </StateContext.Provider>
     </ThemeProvider>

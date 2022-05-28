@@ -41,13 +41,7 @@ const StyledItem = styled.div`
   ${(props) =>
     props.xs &&
     respondTo.xs`
-    width: ${Math.round((props.xs / 12) * 10e7) / 10e5}%;
-  `}
-
-  ${(props) =>
-    props.sm &&
-    respondTo.sm`
-    width: ${Math.round((props.sm / 12) * 10e7) / 10e5}%;
+    width: ${Math.round((props.xs / 12) * 10e7) / 10e5}%; // 200px
   `}
 
   ${(props) =>
@@ -55,6 +49,7 @@ const StyledItem = styled.div`
     respondTo.md`
     width: ${Math.round((props.md / 12) * 10e7) / 10e5}%;
   `}
+
 
   ${(props) =>
     props.lg &&
